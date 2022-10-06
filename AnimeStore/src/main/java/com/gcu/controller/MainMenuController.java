@@ -21,7 +21,7 @@ public class MainMenuController {
 		return "home";
 	}
 	
-	@GetMapping("/test2")
+	@GetMapping("/intro")
 	public ModelAndView printHello1() 
 	{
 		ModelAndView mv = new ModelAndView();

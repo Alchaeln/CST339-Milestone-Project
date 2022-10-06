@@ -37,13 +37,14 @@ public class LoginController {
 		}
 		
 		List<OrderModel> orders = new ArrayList<OrderModel>();
-		orders.add(new OrderModel(0L, "0000000001", "Product 1", 1.00f, 1));
-		orders.add(new OrderModel(1L, "0000000002", "Product 2", 2.00f, 2));
-		orders.add(new OrderModel(2L, "0000000003", "Product 3", 3.00f, 3));
-		orders.add(new OrderModel(3L, "0000000004", "Product 4", 4.00f, 4));
-		orders.add(new OrderModel(4L, "0000000005", "Product 5", 5.00f, 5));
+		orders.add(new OrderModel(0L,"Rengoku Sword", 150000.00f, 1));
+		orders.add(new OrderModel(1L,"ODM Gear", 1000.00f, 143567));
+		orders.add(new OrderModel(2L,"Dragon Ball", 9999999.00f, 7));
+		orders.add(new OrderModel(3L,"Sukuna's Finger", 5000.00f, 20));
+		orders.add(new OrderModel(4L,"Dragon Handle", 100000.00f, 1));
 		
-		model.addAttribute("title", "My Orders");
+		model.addAttribute("title", String.format("You are logged in as %s", loginModel.getUsername()) + "!");
+		//model.addAttribute("title", "Product Page");
 		model.addAttribute("orders", orders);
 		
 		System.out.println(String.format("Form with Username of %s and Password of %s",loginModel.getUsername(), loginModel.getPassword()));

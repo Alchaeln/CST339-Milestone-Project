@@ -3,13 +3,21 @@
 layout:decorate="layouts/defaultTemplate">
 <head>
 <meta charset="ISO-8859-1">
-<title>Login Page</title>
+<title>Register Page</title>
 </head>
 <body>
 	<div layout:fragment="content">
 	<!-- <h2 th:text="${message}">Default text</h2> -->
-		<form action ="#" th:action="@{/login/doLogin}" th:object="${loginModel}" method="post">
+		<form action ="#" th:action="@{doRegister}" th:object="${registerModel}" method="post">
 			<table>
+				<tr>
+					<td>First Name:</td><td><input type="text" th:field="*{firstname}"></td>
+					<td><h5 style="color:red" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">First Name Error</h5></td>
+				</tr>
+				<tr>
+					<td>Last Name:</td><td><input type="text" th:field="*{lastname}"></td>
+					<td><h5 style="color:red" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Last Name Error</h5></td>
+				</tr>
 				<tr>
 					<td>Username:</td><td><input type="text" th:field="*{username}"></td>
 					<td><h5 style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">User Name Error</h5></td>
@@ -17,6 +25,14 @@ layout:decorate="layouts/defaultTemplate">
 				<tr>
 					<td>Password :</td><td><input type="password" th:field="*{password}"></td>
 					<td><h5 style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</h5></td>
+				</tr>
+				<tr>
+					<td>Email :</td><td><input type="email" th:field="*{email}"></td>
+					<td><h5 style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</h5></td>
+				</tr>
+				<tr>
+					<td>Phone Number:</td><td><input type="text" th:field="*{phonenumber}"></td>
+					<td><h5 style="color:red" th:if="${#fields.hasErrors('phonenumber')}" th:errors="*{phonenumber}">Phone Number Error</h5></td>
 				</tr>
 				<tr>
 					<td colspan="3"><input type="submit" value="Submit"></td>
