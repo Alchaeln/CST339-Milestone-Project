@@ -19,7 +19,7 @@ import com.gcu.model.OrderModel;
 @RequestMapping("/login")
 public class LoginController {
 	
-	@GetMapping("/test1")
+	@GetMapping("/")
 	public String display(Model model) 
 	{
 		model.addAttribute("title", "Login Form");
