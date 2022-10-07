@@ -16,7 +16,7 @@ import com.gcu.model.RegisterModel;
 @RequestMapping("/register")
 public class RegisterController {
 
-	@GetMapping("/test1")
+	@GetMapping("/")
 	public String display(Model model) 
 	{
 		model.addAttribute("title", "Register Form");
@@ -39,7 +39,7 @@ public class RegisterController {
 		model.addAttribute("loginModel", login);
 		
 		//shows info taken into
-		System.out.println(String.format("%s %s %s %s %s %s",
+		System.out.println(String.format("New User created with %s user name, %s password, %s %s name, %s phone number, %s email",
 				registerModel.getUsername(), 
 				registerModel.getPassword(), 
 				registerModel.getFirstname(), 
