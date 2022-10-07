@@ -12,7 +12,7 @@ import com.gcu.model.HomeModel;
 @RequestMapping("/home")
 public class MainMenuController {
 	
-	@GetMapping("/test1")
+	@GetMapping("/")
 	public String display(Model model) 
 	{
 		model.addAttribute("title", "Home Page");
