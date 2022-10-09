@@ -4,11 +4,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class RegisterModel {
-	@NotNull(message="Username is a required field")
+	@NotNull(message="First name is a required field")
 	@Size(min=1, max=32, message="First name must be between 1 and 32 characters")
 	private String firstname;
 	
-	@NotNull(message="Username is a required field")
+	@NotNull(message="Last name is a required field")
 	@Size(min=1, max=32, message="Last name must be between 1 and 32 characters")
 	private String lastname;
 	
@@ -24,7 +24,7 @@ public class RegisterModel {
 	@Size(min=1, max=32, message="Password must be between 1 and 32 characters")
 	private String password;
 	
-	@NotNull(message="Password is a required field")
+	@NotNull(message="Email is a required field")
 	@Size(min=1, max=32, message="Email must be between 1 and 32 characters")
 	private String email;
 	
