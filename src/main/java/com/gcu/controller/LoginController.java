@@ -21,10 +21,6 @@ import com.gcu.model.OrderModel;
 //Sets up URI for localhost:8080/login
 @RequestMapping("/login")
 public class LoginController {
-	/**
-	 * Calling interface
-	 * 
-	 */
 	
 	@Autowired
 	private OrdersBusinessServiceInterface service;
@@ -56,13 +52,10 @@ public class LoginController {
 			return "login";
 		}
 		
-		//create list of items
-		List<OrderModel> orders = service.getOrders(); 
-		
 		//gets username and adds title that the user is logged in as "username"
 		model.addAttribute("title", String.format("You are logged in as %s", loginModel.getUsername()) + "!");
 		//passes order list that was just made to orders page
-		model.addAttribute("orders", orders);
+		model.addAttribute("orders", service.getOrders());
 
 		//print out username and password to console
 		System.out.println(String.format("Logged in with Username of %s and Password of %s",loginModel.getUsername(), loginModel.getPassword()));
