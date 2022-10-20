@@ -12,6 +12,7 @@ import com.gcu.business.OrdersBusinessService;
 
 @Configuration
 public class SpringConfig {
+	//test 
 	
 	@Bean(name="ordersBusinessService", initMethod="init", destroyMethod="destroy")
 	//@SessionScope
