@@ -20,6 +20,11 @@ import com.gcu.model.OrderModel;
 @RequestMapping("/login")
 public class LoginController {
 	
+	/**
+	 * Displays login page
+	 * @param model
+	 * @return login view
+	 */
 	//Sets up URI for localhost:8080/login/
 	@GetMapping("/")
 	public String display(Model model) 
