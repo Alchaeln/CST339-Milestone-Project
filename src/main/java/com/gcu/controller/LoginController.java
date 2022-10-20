@@ -31,7 +31,8 @@ public class LoginController {
 	
 	/**
 	 * Method for displaying
-	 * Parameter of Model
+	 * @param model
+	 * @return login view
 	 */
 	//Sets up URI for localhost:8080/login/
 	@GetMapping("/")
