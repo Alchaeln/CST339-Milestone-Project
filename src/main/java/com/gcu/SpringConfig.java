@@ -12,8 +12,6 @@ import com.gcu.business.OrdersBusinessService;
 
 @Configuration
 public class SpringConfig {
-	//test 
-	//mess
 	
 	@Bean(name="ordersBusinessService", initMethod="init", destroyMethod="destroy")
 	//@SessionScope
