@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.gcu.business.OrdersBusinessServiceInterface;
 import com.gcu.model.LoginModel;
 import com.gcu.model.OrderModel;
 
@@ -19,11 +21,17 @@ import com.gcu.model.OrderModel;
 //Sets up URI for localhost:8080/login
 @RequestMapping("/login")
 public class LoginController {
+	/**
+	 * Calling interface
+	 * 
+	 */
+	
+	@Autowired
+	private OrdersBusinessServiceInterface service;
 	
 	/**
-	 * Displays login page
-	 * @param model
-	 * @return login view
+	 * Method for displaying
+	 * Parameter of Model
 	 */
 	//Sets up URI for localhost:8080/login/
 	@GetMapping("/")
@@ -48,12 +56,7 @@ public class LoginController {
 		}
 		
 		//create list of items
-		List<OrderModel> orders = new ArrayList<OrderModel>();
-		orders.add(new OrderModel(0L,"Rengoku Sword", 150000.00f, 1));
-		orders.add(new OrderModel(1L,"ODM Gear", 1000.00f, 1200));
-		orders.add(new OrderModel(2L,"Dragon Ball", 9999999.00f, 7));
-		orders.add(new OrderModel(3L,"Sukuna's Finger", 5000.00f, 20));
-		orders.add(new OrderModel(4L,"Dragon Handle", 100000.00f, 1));
+		List<OrderModel> orders = service.getOrders(); 
 		
 		//gets username and adds title that the user is logged in as "username"
 		model.addAttribute("title", String.format("You are logged in as %s", loginModel.getUsername()) + "!");
