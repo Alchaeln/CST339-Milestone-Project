@@ -12,11 +12,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.gcu.model.LoginModel;
 import com.gcu.model.RegisterModel;
 
+/**
+ * controls all of the register page routes
+ * @author Edu and Chael
+ */
 @Controller
 //Sets up URI for localhost:8080/register
 @RequestMapping("/register")
 public class RegisterController {
 
+	/**
+	 * add attributes to model and returns register view
+	 * @param model
+	 * @return register view
+	 */
 	//Sets up URI for localhost:8080/register/
 	@GetMapping("/")
 	public String display(Model model) 
@@ -27,6 +36,13 @@ public class RegisterController {
 		return "register";
 	}
 	
+	/**
+	 * verifies inputs and continues to login page if inputs are valid
+	 * @param registerModel
+	 * @param bindingResult
+	 * @param model
+	 * @return login view
+	 */
 	//Sets up URI for localhost:8080/register/doRegister
 	@PostMapping("/doRegister")
 	//@Valid checks that all inputs are valid

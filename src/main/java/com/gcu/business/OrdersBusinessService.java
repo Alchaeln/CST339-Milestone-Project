@@ -8,10 +8,17 @@ import javax.annotation.PreDestroy;
 
 import com.gcu.model.OrderModel;
 
+/**
+ * OrdersBusinessService has a method to return order list and default init and destroy methods.
+ * @author Edu and Chael
+ */
 public class OrdersBusinessService implements OrdersBusinessServiceInterface{
 
+	/**
+	 * creates hard coded list of orders and returns the list
+	 * @returns orders
+	 */
 	public List<OrderModel> getOrders() {
-		//create hard coded list of orders
 		List<OrderModel> orders = new ArrayList<OrderModel>();
 		orders.add(new OrderModel(0L,"Rengoku Sword", 150000.00f, 1));
 		orders.add(new OrderModel(1L,"ODM Gear", 1000.00f, 12000));

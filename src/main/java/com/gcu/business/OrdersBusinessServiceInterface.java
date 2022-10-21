@@ -6,12 +6,19 @@ import com.gcu.model.OrderModel;
 
 public interface OrdersBusinessServiceInterface {
 	
-	//return hard coded list of orders
+	/**
+	 * returns hard coded list of orders
+	 * @return orders
+	 */
 	public List<OrderModel> getOrders();
 	
-	//make sure service is being initialized
+	/**
+	 * make sure service is being initialized
+	 */
 	public void init();
 	
-	//make sure service is being initialized
+	/**
+	 * make sure service is being initialized
+	 */
 	public void destroy();
 }

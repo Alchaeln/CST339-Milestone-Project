@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gcu.model.OrderList;
 import com.gcu.model.OrderModel;
 
+/**
+ * OrdersRestService allows the return of JSON and XML formatted orders list
+ * @author Edu and Chael
+ */
 @RestController
 @RequestMapping("/service")
 public class OrdersRestService {

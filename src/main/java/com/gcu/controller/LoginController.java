@@ -13,16 +13,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.gcu.business.OrdersBusinessServiceInterface;
 import com.gcu.model.LoginModel;
 
+/**
+ * Has all the routes for the login page with root /login
+ * @author Edu and Chael
+ */
 @Controller
 //Sets up URI for localhost:8080/login
 @RequestMapping("/login")
 public class LoginController {
 	
+	//initialize OrdersBusinessService
 	@Autowired
 	private OrdersBusinessServiceInterface service;
 	
 	/**
-	 * Method for displaying
+	 * Method for displaying login page
 	 * @param model
 	 * @return login view
 	 */
