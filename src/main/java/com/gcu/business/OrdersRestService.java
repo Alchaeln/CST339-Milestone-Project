@@ -15,15 +15,24 @@ import com.gcu.model.OrderModel;
 @RequestMapping("/service")
 public class OrdersRestService {
 	
+	//initialize service variable
 	@Autowired
 	private OrdersBusinessServiceInterface service;
 	
+	/**
+	 * Returns JSON version of orders
+	 * @return service.getOrders()
+	 */
 	@GetMapping(path="/getjson", produces= {MediaType.APPLICATION_JSON_VALUE})
 	public List<OrderModel> getOrdersAsJson()
 	{
 		return service.getOrders();
 	}
 	
+	/**
+	 * Returns XML format list of orders
+	 * @return return list
+	 */
 	@GetMapping(path="/getxml", produces= {MediaType.APPLICATION_XML_VALUE})
 	public OrderList getOrdersAsXml()
 	{
@@ -32,7 +41,7 @@ public class OrdersRestService {
 		return list;
 	}
 	
-	/**
+	/*
 	@GetMapping(path="/gettest", produces= {MediaType.APPLICATION_JSON_VALUE})
 	public List<OrderModel> getErrorsAsJson()
 	{
@@ -45,5 +54,5 @@ public class OrdersRestService {
 			return {"error" : "Please Provide stuff"};	
 		}
 	}
-	**/
+	*/
 }

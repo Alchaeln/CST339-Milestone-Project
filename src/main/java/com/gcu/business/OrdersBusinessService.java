@@ -3,12 +3,15 @@ package com.gcu.business;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import com.gcu.model.OrderModel;
 
 public class OrdersBusinessService implements OrdersBusinessServiceInterface{
 
 	public List<OrderModel> getOrders() {
-		// TODO Auto-generated method stub
+		//create hard coded list of orders
 		List<OrderModel> orders = new ArrayList<OrderModel>();
 		orders.add(new OrderModel(0L,"Rengoku Sword", 150000.00f, 1));
 		orders.add(new OrderModel(1L,"ODM Gear", 1000.00f, 12000));
@@ -18,10 +21,18 @@ public class OrdersBusinessService implements OrdersBusinessServiceInterface{
 		return orders;
 	}
 
+	/**
+	 * Console output to make sure OrdersBusinessService is being initialized
+	 */
+	@PostConstruct
 	public void init() {
 		System.out.println("INIT");
 	}
 
+	/**
+	 * Console output to make sure OrdersBusinessService is being destroyed
+	 */
+	@PreDestroy
 	public void destroy() {
 		System.out.println("DESTROY");
 	}
