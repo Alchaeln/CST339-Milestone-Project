@@ -1,8 +1,5 @@
 package com.gcu.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gcu.business.OrdersBusinessServiceInterface;
 import com.gcu.model.LoginModel;
-import com.gcu.model.OrderModel;
 
 @Controller
 //Sets up URI for localhost:8080/login
@@ -40,6 +36,13 @@ public class LoginController {
 		return "login";
 	}
 	
+	/**
+	 * Logs the user in and shows the orders page if successful
+	 * @param loginModel
+	 * @param bindingResult
+	 * @param model
+	 * @return
+	 */
 	//Sets up URI for localhost:8080/login/doLogin
 	@PostMapping("/doLogin")
 	//@Valid checks that the username and password are valid

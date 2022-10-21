@@ -7,13 +7,6 @@ import com.gcu.model.OrderModel;
 
 public class OrdersBusinessService implements OrdersBusinessServiceInterface{
 
-	@Override
-	public void test() {
-		// TODO Auto-generated method stub
-		System.out.println("Hello from the OrdersBusinessService to the console");
-	}
-
-	@Override
 	public List<OrderModel> getOrders() {
 		// TODO Auto-generated method stub
 		List<OrderModel> orders = new ArrayList<OrderModel>();
@@ -25,15 +18,11 @@ public class OrdersBusinessService implements OrdersBusinessServiceInterface{
 		return orders;
 	}
 
-	@Override
 	public void init() {
-		// TODO Auto-generated method stub
 		System.out.println("INIT");
 	}
 
-	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
 		System.out.println("DESTROY");
 	}
 }
