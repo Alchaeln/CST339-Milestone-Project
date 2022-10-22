@@ -7,8 +7,9 @@ package com.gcu.model;
 public class OrderModel {
 	//creates private variables
 	private long id;
-	private String productName;
-	private float price;
+	private long productId;
+	private String customerName;
+	private float total;
 	private int quantity;
 	
 	/**
@@ -29,29 +30,29 @@ public class OrderModel {
 	 * public getter for private variable productName
 	 * @return productName
 	 */
-	public String getProductName() {
-		return productName;
+	public String getCustomerName() {
+		return customerName;
 	}
 	/**
 	 * public setter for private variable productName
 	 * @param productName
 	 */
-	public void setProductName(String productName) {
-		this.productName = productName;
+	public void setCustomerName(String productName) {
+		this.customerName = productName;
 	}
 	/**
 	 * public getter for private variable price
 	 * @return price
 	 */
-	public Float getPrice() {
-		return price;
+	public Float getTotal() {
+		return total;
 	}
 	/**
 	 * public setter for private variable price
 	 * @param price
 	 */
-	public void setPrice(Float price) {
-		this.price = price;
+	public void setTotal(Float price) {
+		this.total = price;
 	}
 	/**
 	 * public getter for private variable quantity
@@ -74,12 +75,25 @@ public class OrderModel {
 	 * @param price
 	 * @param quantity
 	 */
-	public OrderModel(long id, String productName, float price, int quantity) {
+	public OrderModel(long id, long productId, String customerName, float total, int quantity) {
 		super();
 		this.id = id;
-		this.productName = productName;
-		this.price = price;
+		this.productId = productId;
+		this.customerName = customerName;
+		this.total = total;
 		this.quantity = quantity;
+	}
+	/**
+	 * @return the productId
+	 */
+	public long getProductId() {
+		return productId;
+	}
+	/**
+	 * @param productId the productId to set
+	 */
+	public void setProductId(long productId) {
+		this.productId = productId;
 	}
 	
 	
