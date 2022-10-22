@@ -67,4 +67,12 @@ public class ProductModel {
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
+	
+	public ProductModel(long id, String productName, float price, int quantity) {
+		super();
+		this.id = id;
+		this.productName = productName;
+		this.price = price;
+		this.quantity = quantity;
+	}
 }
