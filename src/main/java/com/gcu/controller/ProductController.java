@@ -13,7 +13,7 @@ import com.gcu.model.ProductModel;
  */
 @Controller
 //Sets up URI for localhost:8080/login
-@RequestMapping("/login")
+@RequestMapping("/")
 public class ProductController {
 	
 	/**
