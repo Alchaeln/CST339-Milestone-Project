@@ -36,7 +36,7 @@ public class ProductController {
 	public String addProduct(Model model) 
 	{
 		//adds attributes of title and loginModel to be shown in the web page
-		model.addAttribute("title", "Add a Product!");
+		model.addAttribute("title", "Add a Product");
 		model.addAttribute("productModel", new ProductModel());
 		return "Product";
 	}
