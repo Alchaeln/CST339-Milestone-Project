@@ -29,7 +29,6 @@ public class OrdersBusinessService implements OrdersBusinessServiceInterface{
 		return orders;
 	}
 	
-	@Override
 	public List<ProductModel> getProducts() {
 		List<ProductModel> products = new ArrayList<ProductModel>();
 		products.add(new ProductModel(0L, "Product 1", 100.00f, 1));

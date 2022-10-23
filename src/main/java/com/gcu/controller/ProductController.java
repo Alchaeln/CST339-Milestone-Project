@@ -1,8 +1,5 @@
 package com.gcu.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gcu.business.OrdersBusinessServiceInterface;
-import com.gcu.model.LoginModel;
-import com.gcu.model.OrderModel;
 import com.gcu.model.ProductModel;
 
 /**
@@ -36,7 +31,7 @@ public class ProductController {
 	 * @return newProduct view
 	 */
 	//Sets up URI for localhost:8080/login/
-	@GetMapping("/addProduct")
+	@GetMapping("/products")
 	public String display(Model model) 
 	{
 		model.addAttribute("title", "The Products");
@@ -44,7 +39,7 @@ public class ProductController {
 		return "newProduct";
 	}
 	
-	@PostMapping("/addProduct/product")
+	@PostMapping("/addProduct")
 	//@Valid checks that the username and password are valid
 	public String doLogin(@Valid ProductModel productModel, BindingResult bindingResult,Model model) 
 	{
@@ -56,7 +51,7 @@ public class ProductController {
 			return "newProduct";
 		}
 		
-		model.addAttribute("title", "Added Product");
+		model.addAttribute("title", "Added Product!");
 		model.addAttribute("productModel", service.getProducts());
 		return "newProduct";
 	}
