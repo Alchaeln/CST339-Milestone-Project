@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gcu.business.OrdersBusinessServiceInterface;
-import com.gcu.model.LoginModel;
 import com.gcu.model.ProductModel;
 
 /**
@@ -50,7 +49,7 @@ public class ProductController {
 	}
 	
 	@PostMapping("/addProduct")
-	//@Valid checks that the username and password are valid
+	//@Valid checks that the product model is valid
 	public String addProduct(@Valid ProductModel productModel, BindingResult bindingResult,Model model) 
 	{
 		//if product is invalid, send back to product page
@@ -63,8 +62,6 @@ public class ProductController {
 		
 		model.addAttribute("title", "Added Product!");
 		model.addAttribute("productModel", service.getProducts());
-		
-		System.out.println(String.format("Logged in with Username of %s and Password of",productModel.getProductName()));
 		
 		return "newProduct";
 	}
