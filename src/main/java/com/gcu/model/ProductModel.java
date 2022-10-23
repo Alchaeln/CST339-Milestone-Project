@@ -1,6 +1,9 @@
 package com.gcu.model;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+
 import javax.validation.constraints.Size;
 
 /**
@@ -9,20 +12,18 @@ import javax.validation.constraints.Size;
  */
 public class ProductModel {
 	//creates private variables
+	//when adding max and min gives data validation errors
 	@NotNull(message="ID is a required field")
-	@Size(min=1, max=4, message="ID must be between 1 and 4 characters")
 	private long id;
 	
 	@NotNull(message="Product Name is a required field")
-	@Size(min=1, max=32, message="Product Name must be between 1 and 32 characters")
+	@Size(min=1, max=32, message="productName must be between 1 and 32 characters")
 	private String productName;
 	
 	@NotNull(message="Price is a required field")
-	@Size(min=1, max=16, message="Price must be between 1 and 16 characters")
 	private float price;
 	
 	@NotNull(message="Quantity is a required field")
-	@Size(min=1, max=8, message="Quantity must be between 1 and 8 characters")
 	private int quantity;
 	
 	/**
@@ -88,5 +89,9 @@ public class ProductModel {
 		this.productName = productName;
 		this.price = price;
 		this.quantity = quantity;
+	}
+	
+	public ProductModel() {
+		// TODO Auto-generated constructor stub
 	}
 }
