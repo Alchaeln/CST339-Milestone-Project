@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 import com.gcu.model.OrderModel;
+import com.gcu.model.ProductModel;
 
 /**
  * OrdersBusinessService has a method to return order list and default init and destroy methods.
@@ -27,6 +28,17 @@ public class OrdersBusinessService implements OrdersBusinessServiceInterface{
 		orders.add(new OrderModel(5,4L,"Dragon Handle", 100000.00f, 1));
 		return orders;
 	}
+	
+	@Override
+	public List<ProductModel> getProducts() {
+		List<ProductModel> products = new ArrayList<ProductModel>();
+		products.add(new ProductModel(0L, "Product 1", 100.00f, 1));
+		products.add(new ProductModel(1L, "Product 2", 200.00f, 2));
+		products.add(new ProductModel(2L, "Product 3", 300.00f, 3));
+		products.add(new ProductModel(3L, "Product 4", 400.00f, 4));
+		products.add(new ProductModel(4L, "Product 5", 500.00f, 5));
+		return products;
+	}
 
 	/**
 	 * Console output to make sure OrdersBusinessService is being initialized
@@ -43,4 +55,6 @@ public class OrdersBusinessService implements OrdersBusinessServiceInterface{
 	public void destroy() {
 		System.out.println("DESTROY");
 	}
+
+
 }
