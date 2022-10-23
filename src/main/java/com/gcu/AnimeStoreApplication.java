@@ -17,5 +17,4 @@ public class AnimeStoreApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AnimeStoreApplication.class, args);
 	}
-
 }
