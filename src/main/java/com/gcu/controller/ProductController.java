@@ -33,7 +33,7 @@ public class ProductController {
 	 */
 	//Sets up URI for localhost:8080/login/
 	@GetMapping("/enterProduct")
-	public String addProduct(Model model) 
+	public String enterProduct(Model model) 
 	{
 		//adds attributes of title and loginModel to be shown in the web page
 		model.addAttribute("title", "Add a Product!");
@@ -51,7 +51,7 @@ public class ProductController {
 	
 	@PostMapping("/addProduct")
 	//@Valid checks that the username and password are valid
-	public String doLogin(@Valid ProductModel productModel, BindingResult bindingResult,Model model) 
+	public String addProduct(@Valid ProductModel productModel, BindingResult bindingResult,Model model) 
 	{
 		//if product is invalid, send back to product page
 		if(bindingResult.hasErrors()) 
