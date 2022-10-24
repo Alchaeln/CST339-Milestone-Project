@@ -28,7 +28,7 @@ public class OrderModel {
 	}
 	/**
 	 * public getter for private variable productName
-	 * @return productName
+	 * @return customerName
 	 */
 	public String getCustomerName() {
 		return customerName;
@@ -71,8 +71,9 @@ public class OrderModel {
 	/**
 	 * public constructor
 	 * @param id
-	 * @param productName
-	 * @param price
+	 * @param productId
+	 * @param customerName
+	 * @param total
 	 * @param quantity
 	 */
 	public OrderModel(long id, long productId, String customerName, float total, int quantity) {
@@ -84,13 +85,15 @@ public class OrderModel {
 		this.quantity = quantity;
 	}
 	/**
-	 * @return the productId
+	 * gets product ID
+	 * @return productId
 	 */
 	public long getProductId() {
 		return productId;
 	}
 	/**
-	 * @param productId the productId to set
+	 * sets product ID
+	 * @param productId
 	 */
 	public void setProductId(long productId) {
 		this.productId = productId;

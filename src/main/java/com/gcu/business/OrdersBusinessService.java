@@ -17,7 +17,7 @@ public class OrdersBusinessService implements OrdersBusinessServiceInterface{
 
 	/**
 	 * creates hard coded list of orders and returns the list
-	 * @returns orders
+	 * @return orders
 	 */
 	public List<OrderModel> getOrders() {
 		List<OrderModel> orders = new ArrayList<OrderModel>();
@@ -31,7 +31,7 @@ public class OrdersBusinessService implements OrdersBusinessServiceInterface{
 	
 	/**
 	 * creates hard coded list of products and returns the list
-	 * @returns products
+	 * @return products
 	 */
 	public List<ProductModel> getProducts() {
 		List<ProductModel> products = new ArrayList<ProductModel>();

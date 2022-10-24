@@ -40,6 +40,11 @@ public class ProductController {
 		return "Product";
 	}
 	
+	/**
+	 * basic product page
+	 * @param model
+	 * @return newProduct view
+	 */
 	@GetMapping("/products")
 	public String display(Model model) 
 	{
@@ -48,6 +53,13 @@ public class ProductController {
 		return "newProduct";
 	}
 	
+	/**
+	 * validates product
+	 * @param productModel
+	 * @param bindingResult
+	 * @param model
+	 * @return newProduct view
+	 */
 	@PostMapping("/addProduct")
 	//@Valid checks that the product model is valid
 	public String addProduct(@Valid ProductModel productModel, BindingResult bindingResult,Model model) 

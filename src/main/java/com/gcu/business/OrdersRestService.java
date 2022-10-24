@@ -44,19 +44,4 @@ public class OrdersRestService {
 		list.setOrders(service.getOrders());
 		return list;
 	}
-	
-	/*
-	@GetMapping(path="/gettest", produces= {MediaType.APPLICATION_JSON_VALUE})
-	public List<OrderModel> getErrorsAsJson()
-	{
-		try 
-		{
-			throw new NullPointerException();
-		}
-		catch(exception e)
-		{
-			return {"error" : "Please Provide stuff"};	
-		}
-	}
-	*/
 }

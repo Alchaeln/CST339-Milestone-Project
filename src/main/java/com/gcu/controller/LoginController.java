@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gcu.business.OrdersBusinessServiceInterface;
+import com.gcu.business.SecurityBusinessService;
 import com.gcu.model.LoginModel;
 
 /**
@@ -25,6 +26,9 @@ public class LoginController {
 	//initialize OrdersBusinessService
 	@Autowired
 	private OrdersBusinessServiceInterface service;
+	
+	@Autowired
+	private SecurityBusinessService security;
 	
 	/**
 	 * Method for displaying login page
@@ -59,6 +63,8 @@ public class LoginController {
 			model.addAttribute("title", "Login Form");
 			return "login";
 		}
+		
+		security.authenticate(loginModel.getUsername(), loginModel.getPassword());
 		
 		//gets username and adds title that the user is logged in as "username"
 		model.addAttribute("title", String.format("You are logged in as %s", loginModel.getUsername()) + "!");
