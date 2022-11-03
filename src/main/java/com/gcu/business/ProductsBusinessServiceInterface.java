@@ -2,16 +2,15 @@ package com.gcu.business;
 
 import java.util.List;
 
-import com.gcu.model.OrderModel;
 import com.gcu.model.ProductModel;
 
-public interface OrdersBusinessServiceInterface {
+public interface ProductsBusinessServiceInterface {
 	
 	/**
-	 * returns hard coded list of orders
-	 * @return orders
+	 * returns hard coded list of products
+	 * @return products
 	 */
-	public List<OrderModel> getOrders();
+	public List<ProductModel> getProducts();
 	
 	/**
 	 * make sure service is being initialized
