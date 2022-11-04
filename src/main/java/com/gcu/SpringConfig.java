@@ -3,8 +3,6 @@ package com.gcu;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import com.gcu.business.OrdersBusinessServiceInterface;
-import com.gcu.business.ProductsBusinessService;
-import com.gcu.business.ProductsBusinessServiceInterface;
 import com.gcu.business.OrdersBusinessService;
 
 /**
@@ -19,18 +17,8 @@ public class SpringConfig {
 	 * @return OrdersBusinessService
 	 */
 	@Bean(name="ordersBusinessService", initMethod="init", destroyMethod="destroy")
-	//@SessionScope
-	//@Scope(value="prototype", proxyMode=ScopedProxyMode.TARGET_CLASS)
 	public OrdersBusinessServiceInterface getOrdersBusiness() 
 	{
 		return new OrdersBusinessService();
-	}
-	
-	@Bean(name="productsBusinessService", initMethod="init", destroyMethod="destroy")
-	//@SessionScope
-	//@Scope(value="prototype", proxyMode=ScopedProxyMode.TARGET_CLASS)
-	public ProductsBusinessServiceInterface getProductsBusiness() 
-	{
-		return new ProductsBusinessService();
 	}
 }
