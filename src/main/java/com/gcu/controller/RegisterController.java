@@ -2,6 +2,7 @@ package com.gcu.controller;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.gcu.business.SecurityBusinessService;
 import com.gcu.model.LoginModel;
 import com.gcu.model.RegisterModel;
 
@@ -21,6 +23,10 @@ import com.gcu.model.RegisterModel;
 @RequestMapping("/register")
 public class RegisterController {
 
+	@Autowired
+	private SecurityBusinessService security;
+	
+	
 	/**
 	 * add attributes to model and returns register view
 	 * @param model
@@ -54,6 +60,14 @@ public class RegisterController {
 			model.addAttribute("title", "Register Form");
 			return "register";
 		}
+		
+		security.authenticateRegister(registerModel.getUsername(), 
+				registerModel.getPassword(), 
+				registerModel.getFirstname(),
+				registerModel.getLastname(),
+				registerModel.getPhonenumber(),
+				registerModel.getEmail());
+		
 		
 		//creates login model
 		LoginModel login = new LoginModel();

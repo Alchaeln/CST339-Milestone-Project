@@ -64,7 +64,7 @@ public class LoginController {
 			return "login";
 		}
 		
-		security.authenticate(loginModel.getUsername(), loginModel.getPassword());
+		security.authenticateLogin(loginModel.getUsername(), loginModel.getPassword());
 		
 		//gets username and adds title that the user is logged in as "username"
 		model.addAttribute("title", String.format("You are logged in as %s", loginModel.getUsername()) + "!");

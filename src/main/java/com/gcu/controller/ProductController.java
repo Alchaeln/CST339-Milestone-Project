@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gcu.business.OrdersBusinessServiceInterface;
+import com.gcu.business.ProductsBusinessServiceInterface;
 import com.gcu.model.ProductModel;
 
 /**
@@ -23,7 +24,7 @@ import com.gcu.model.ProductModel;
 public class ProductController {
 	
 	@Autowired
-	private OrdersBusinessServiceInterface service;
+	private ProductsBusinessServiceInterface service;
 	
 	/**
 	 * Method for displaying product page
