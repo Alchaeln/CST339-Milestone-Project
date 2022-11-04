@@ -15,6 +15,7 @@ import com.gcu.model.OrderModel;
 @Service
 public class OrdersDataService implements DataAccessInterface<OrderModel> {
 	
+	@SuppressWarnings("unused")
 	@Autowired
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplateObject;
@@ -26,7 +27,6 @@ public class OrdersDataService implements DataAccessInterface<OrderModel> {
 	}
 
 	public List<OrderModel> findAll() {
-		// TODO Auto-generated method stub
 		String sql = "SELECT * FROM ORDERS";
 		List<OrderModel> orders = new ArrayList<OrderModel>();
 		try 
@@ -50,13 +50,11 @@ public class OrdersDataService implements DataAccessInterface<OrderModel> {
 
 	@Override
 	public OrderModel findById(int id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean create(OrderModel order) {
-		// TODO Auto-generated method stub
 		String sql = "INSERT INTO ORDERS(ORDER_NO, PRODUCT_NAME, PRICE, QUANTITY) VALUES (?, ?, ?, ?))";
 		try 
 		{

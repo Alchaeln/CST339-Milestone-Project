@@ -7,7 +7,7 @@ import com.gcu.model.ProductModel;
 public interface ProductsBusinessServiceInterface {
 	
 	/**
-	 * returns hard coded list of products
+	 * returns products from database
 	 * @return products
 	 */
 	public List<ProductModel> getProducts();

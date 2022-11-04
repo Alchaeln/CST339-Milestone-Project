@@ -3,7 +3,6 @@ package com.gcu.business;
 import java.util.List;
 
 import com.gcu.model.OrderModel;
-import com.gcu.model.ProductModel;
 
 public interface OrdersBusinessServiceInterface {
 	

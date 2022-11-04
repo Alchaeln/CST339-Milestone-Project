@@ -3,6 +3,8 @@ package com.gcu;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import com.gcu.business.OrdersBusinessServiceInterface;
+import com.gcu.business.ProductsBusinessService;
+import com.gcu.business.ProductsBusinessServiceInterface;
 import com.gcu.business.OrdersBusinessService;
 
 /**
@@ -20,5 +22,15 @@ public class SpringConfig {
 	public OrdersBusinessServiceInterface getOrdersBusiness() 
 	{
 		return new OrdersBusinessService();
+	}
+	
+	/**
+	 * creates a Spring Bean as an instance of the class OrdersBusinessService
+	 * @return OrdersBusinessService
+	 */
+	@Bean(name="productsBusinessService", initMethod="init", destroyMethod="destroy")
+	public ProductsBusinessServiceInterface getProductsBusiness() 
+	{
+		return new ProductsBusinessService();
 	}
 }

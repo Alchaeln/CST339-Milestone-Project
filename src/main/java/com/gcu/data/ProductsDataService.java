@@ -10,12 +10,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
 
-import com.gcu.model.OrderModel;
 import com.gcu.model.ProductModel;
 
 @Service
 public class ProductsDataService implements DataAccessInterface<ProductModel> {
 	
+	@SuppressWarnings("unused")
 	@Autowired
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplateObject;
@@ -27,7 +27,6 @@ public class ProductsDataService implements DataAccessInterface<ProductModel> {
 	}
 
 	public List<ProductModel> findAll() {
-		// TODO Auto-generated method stub
 		String sql = "SELECT * FROM PRODUCTS";
 		List<ProductModel> products = new ArrayList<ProductModel>();
 		try 
@@ -50,13 +49,11 @@ public class ProductsDataService implements DataAccessInterface<ProductModel> {
 
 	@Override
 	public ProductModel findById(int id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean create(ProductModel product) {
-		// TODO Auto-generated method stub
 		String sql = "INSERT INTO ORDERS(ORDER_NO, PRODUCT_NAME, PRICE, QUANTITY) VALUES (?, ?, ?, ?))";
 		try 
 		{
@@ -75,13 +72,11 @@ public class ProductsDataService implements DataAccessInterface<ProductModel> {
 	}
 	@Override
 	public boolean update(ProductModel product) {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public boolean delete(ProductModel product) {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
