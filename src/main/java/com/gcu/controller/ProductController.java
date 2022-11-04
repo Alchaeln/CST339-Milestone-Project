@@ -28,13 +28,13 @@ public class ProductController {
 	/**
 	 * Method for displaying product page
 	 * @param model
-	 * @return newProduct view
+	 * @return Product view
 	 */
-	//Sets up URI for localhost:8080/login/
+	//Sets up URI for localhost:8080/enterProduct/
 	@GetMapping("/enterProduct")
 	public String enterProduct(Model model) 
 	{
-		//adds attributes of title and loginModel to be shown in the web page
+		//adds attributes of title and productModel to be shown in the web page
 		model.addAttribute("title", "Add a Product");
 		model.addAttribute("productModel", new ProductModel());
 		return "Product";

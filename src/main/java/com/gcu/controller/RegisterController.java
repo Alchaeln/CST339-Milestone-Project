@@ -61,8 +61,8 @@ public class RegisterController {
 			return "register";
 		}
 		
-		security.authenticateRegister(registerModel.getLogin().getUsername(), 
-				registerModel.getLogin().getPassword(), 
+		security.authenticateRegister(registerModel.getUsername(), 
+				registerModel.getPassword(), 
 				registerModel.getFirstname(),
 				registerModel.getLastname(),
 				registerModel.getPhonenumber(),
@@ -77,8 +77,8 @@ public class RegisterController {
 		
 		//prints inputs into console
 		System.out.println(String.format("New User created with %s user name, %s password, %s %s name, %s phone number, %s email",
-				registerModel.getLogin().getUsername(), 
-				registerModel.getLogin().getPassword(), 
+				registerModel.getUsername(), 
+				registerModel.getPassword(), 
 				registerModel.getFirstname(), 
 				registerModel.getLastname(), 
 				registerModel.getPhonenumber(), 
