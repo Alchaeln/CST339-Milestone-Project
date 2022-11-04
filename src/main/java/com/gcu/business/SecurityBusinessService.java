@@ -16,7 +16,7 @@ public class SecurityBusinessService {
 	 */
 	 public boolean authenticate(String username, String password) 
 	 {
-		 System.out.printf("Authenticated %d with password %d", username, password);
+		 System.out.printf("Authenticated %s with password %s", username, password);
 		 return true;
 	 }
 }
