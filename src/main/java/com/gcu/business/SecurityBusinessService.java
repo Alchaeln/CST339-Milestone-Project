@@ -3,7 +3,7 @@ package com.gcu.business;
 import org.springframework.stereotype.Service;
 
 /**
- * SecurityBusinessService is used to authenticate username and password
+ * SecurityBusinessService is used to authenticate users
  * @author Edu and Chael
  */
 @Service

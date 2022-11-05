@@ -25,7 +25,7 @@ public class SpringConfig {
 	}
 	
 	/**
-	 * creates a Spring Bean as an instance of the class OrdersBusinessService
+	 * creates a Spring Bean as an instance of the class ProductsBusinessService
 	 * @return OrdersBusinessService
 	 */
 	@Bean(name="productsBusinessService", initMethod="init", destroyMethod="destroy")

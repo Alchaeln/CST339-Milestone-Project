@@ -6,29 +6,29 @@
 </head>
 <body>
 <div layout:fragment="content">
-	<table style="width:50%">
-		<thead>
-			<tr>
-				<th style="text-align:center">ID</th>
-				<th style="text-align:center">Product Name</th>
-				<th style="text-align:center">Price</th>
-				<th style="text-align:center">Quantity</th>
-			<th>
-		</thead>
-		<tbody>
-			<tr th:if="${productModel.empty}">
-				<td style="text-align:center" colspan="4">No Orders Available</td>
-			</tr>
-			<tr th:each="productModel : ${productModel}">
-				<td style="text-align:center"><h5 th:text="${productModel.id}">ID</h5></td>
-				<td style="text-align:center"><h5 th:text="${productModel.productName}">Product 1</h5></td>
-				<td style="text-align:center"><h5 th:text="${productModel.price}">1.00</h5></td>
-				<td style="text-align:center"><h5 th:text="${productModel.quantity}">1</h5></td>
-			</tr>
-		</tbody>
-	</table>
-	<br/>
-	<a th:href="@{/enterProduct}">Add Products</a>
+		<form action ="#" th:action="@{/addProduct}" th:object="${productModel}" method="post">
+			<table>
+				<tr>
+					<td>Product Name :</td><td><input type="text" th:field="*{productName}"></td>
+					<td><h5 style="color:red" th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}">Product Name Error</h5></td>
+				</tr>
+				<tr>
+					<td>Price :</td><td><input type="text" th:field="*{price}"></td>
+					<td><h5 style="color:red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price Error</h5></td>
+				</tr>
+				<tr>
+					<td>Quantity :</td><td><input type="text" th:field="*{quantity}"></td>
+					<td><h5 style="color:red" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}">Quantity Error</h5></td>
+				</tr>
+				<tr>
+					<td colspan="3"><input type="submit" value="Submit"></td>
+				</tr>
+			</table>
+			<div th:if="${#fields.hasErrors('*')}">List of Errors</div>
+			<div th:each="err : ${#fields.errors('*')}">
+				<span style="color:red" th:text="${err}" class="fieldError"></span>
+			</div>
+	</form>
 </div>
 
 </body>

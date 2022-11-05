@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gcu.business.ProductsBusinessServiceInterface;
+import com.gcu.data.DataAccessInterface;
 import com.gcu.model.ProductModel;
 
 /**
@@ -24,6 +25,8 @@ public class ProductController {
 	
 	@Autowired
 	private ProductsBusinessServiceInterface service;
+	@Autowired
+	private DataAccessInterface<ProductModel> dataService;
 	
 	/**
 	 * Method for displaying product page
@@ -37,7 +40,7 @@ public class ProductController {
 		//adds attributes of title and productModel to be shown in the web page
 		model.addAttribute("title", "Add a Product");
 		model.addAttribute("productModel", new ProductModel());
-		return "Product";
+		return "newProduct";
 	}
 	
 	/**
@@ -50,7 +53,7 @@ public class ProductController {
 	{
 		model.addAttribute("title", "The Products");
 		model.addAttribute("productModel", service.getProducts());
-		return "newProduct";
+		return "products";
 	}
 	
 	/**
@@ -69,12 +72,14 @@ public class ProductController {
 		{
 			model.addAttribute("title", "Did not add product!");
 			model.addAttribute("productModel", new ProductModel());
-			return "Product";
+			return "newProduct";
 		}
+		
+		dataService.create(productModel);
 		
 		model.addAttribute("title", "Added Product!");
 		model.addAttribute("productModel", service.getProducts());
 		
-		return "newProduct";
+		return "products";
 	}
 }

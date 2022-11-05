@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gcu.business.SecurityBusinessService;
+import com.gcu.data.RegisterDataService;
 import com.gcu.model.LoginModel;
 import com.gcu.model.RegisterModel;
 
@@ -26,6 +27,8 @@ public class RegisterController {
 	@Autowired
 	private SecurityBusinessService security;
 	
+	@Autowired
+	private RegisterDataService userService;
 	
 	/**
 	 * add attributes to model and returns register view
@@ -67,6 +70,8 @@ public class RegisterController {
 				registerModel.getLastname(),
 				registerModel.getPhonenumber(),
 				registerModel.getEmail());
+		
+		userService.create(registerModel);
 		
 		
 		//creates login model

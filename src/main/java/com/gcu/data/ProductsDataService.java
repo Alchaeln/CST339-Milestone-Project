@@ -54,11 +54,10 @@ public class ProductsDataService implements DataAccessInterface<ProductModel> {
 
 	@Override
 	public boolean create(ProductModel product) {
-		String sql = "INSERT INTO ORDERS(ORDER_NO, PRODUCT_NAME, PRICE, QUANTITY) VALUES (?, ?, ?, ?))";
+		String sql = "INSERT INTO products( PRODUCT_NAME, PRICE, QUANTITY) VALUES (?, ?, ?)";
 		try 
 		{
 			int rows = jdbcTemplateObject.update(sql,
-												product.getId(),
 												product.getProductName(),
 												product.getPrice(),
 												product.getQuantity());
