@@ -18,7 +18,6 @@ public class ProductsBusinessService implements ProductsBusinessServiceInterface
 	
 	@Override
 	public List<ProductModel> getProducts() {
-		
 		return service.findAll();
 	}
 
