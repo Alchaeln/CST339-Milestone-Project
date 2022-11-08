@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gcu.business.OrdersBusinessServiceInterface;
 import com.gcu.business.SecurityBusinessService;
-import com.gcu.model.LoginModel;
+import com.gcu.model.UserModel;
 
 /**
  * Has all the routes for the login page with root /login
@@ -41,7 +41,7 @@ public class LoginController {
 	{
 		//adds attributes of title and loginModel to be shown in the web page
 		model.addAttribute("title", "Login Form");
-		model.addAttribute("loginModel", new LoginModel());
+		model.addAttribute("userModel", new UserModel());
 		return "login";
 	}
 	
@@ -55,7 +55,7 @@ public class LoginController {
 	//Sets up URI for localhost:8080/login/doLogin
 	@PostMapping("/doLogin")
 	//@Valid checks that the username and password are valid
-	public String doLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model) 
+	public String doLogin(@Valid UserModel user, BindingResult bindingResult, Model model) 
 	{
 		//if username or password is invalid, send back to login page
 		if(bindingResult.hasErrors()) 
@@ -64,15 +64,15 @@ public class LoginController {
 			return "login";
 		}
 		
-		security.authenticateLogin(loginModel.getUsername(), loginModel.getPassword());
+		security.authenticateLogin(user.getUsername(), user.getPassword());
 		
 		//gets username and adds title that the user is logged in as "username"
-		model.addAttribute("title", String.format("You are logged in as %s", loginModel.getUsername()) + "!");
+		model.addAttribute("title", String.format("You are logged in as %s", user.getUsername()) + "!");
 		//passes order list that was just made to orders page
 		model.addAttribute("orders", service.getOrders());
 
 		//print out username and password to console
-		System.out.println(String.format("Logged in with Username of %s and Password of %s",loginModel.getUsername(), loginModel.getPassword()));
+		System.out.println(String.format("Logged in with Username of %s and Password of %s",user.getUsername(), user.getPassword()));
 		return "orders";
 	}
 	

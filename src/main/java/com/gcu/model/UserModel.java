@@ -7,7 +7,7 @@ import javax.validation.constraints.Size;
  * Model for register to get input from register page
  * @author Edu and Chael
  */
-public class RegisterModel {
+public class UserModel {
 	//initialize variables with validation requirements 
 	@NotNull(message="First name is a required field")
 	@Size(min=1, max=32, message="First name must be between 1 and 32 characters")

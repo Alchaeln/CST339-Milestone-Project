@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
-import com.gcu.model.RegisterModel;
+import com.gcu.model.UserModel;
 
 @Service
-public class RegisterDataService implements DataAccessInterface<RegisterModel> {
+public class RegisterDataService implements DataAccessInterface<UserModel> {
 
 	@SuppressWarnings("unused")
 	@Autowired
@@ -25,7 +25,7 @@ public class RegisterDataService implements DataAccessInterface<RegisterModel> {
 	}
 	
 	@Override
-	public boolean create(RegisterModel user) {
+	public boolean create(UserModel user) {
 		String sql = "INSERT INTO users( FIRST_NAME, LAST_NAME, USERNAME, PHONE_NUMBER, PASSWORD, EMAIL) VALUES (?, ?, ?, ?, ?, ?)";
 		try 
 		{
@@ -46,25 +46,25 @@ public class RegisterDataService implements DataAccessInterface<RegisterModel> {
 	}
 
 	@Override
-	public boolean update(RegisterModel t) {
+	public boolean update(UserModel user) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean delete(RegisterModel t) {
+	public boolean delete(UserModel user) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public List<RegisterModel> findAll() {
+	public List<UserModel> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public RegisterModel findById(int id) {
+	public UserModel findById(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

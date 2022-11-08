@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gcu.business.SecurityBusinessService;
 import com.gcu.data.RegisterDataService;
-import com.gcu.model.LoginModel;
-import com.gcu.model.RegisterModel;
+import com.gcu.model.UserModel;
 
 /**
  * controls all of the register page routes
@@ -41,7 +40,7 @@ public class RegisterController {
 	{
 		//adds title and register model to be displayed
 		model.addAttribute("title", "Register Form");
-		model.addAttribute("registerModel", new RegisterModel());
+		model.addAttribute("userModel", new UserModel());
 		return "register";
 	}
 	
@@ -55,7 +54,7 @@ public class RegisterController {
 	//Sets up URI for localhost:8080/register/doRegister
 	@PostMapping("/doRegister")
 	//@Valid checks that all inputs are valid
-	public String doRegister(@Valid RegisterModel registerModel, BindingResult bindingResult, Model model) 
+	public String doRegister(@Valid UserModel user, BindingResult bindingResult, Model model) 
 	{
 		//if an input is invalid, send back to register page
 		if(bindingResult.hasErrors()) 
@@ -64,30 +63,30 @@ public class RegisterController {
 			return "register";
 		}
 		
-		security.authenticateRegister(registerModel.getUsername(), 
-				registerModel.getPassword(), 
-				registerModel.getFirstname(),
-				registerModel.getLastname(),
-				registerModel.getPhonenumber(),
-				registerModel.getEmail());
+		security.authenticateRegister(user.getUsername(), 
+				user.getPassword(), 
+				user.getFirstname(),
+				user.getLastname(),
+				user.getPhonenumber(),
+				user.getEmail());
 		
-		userService.create(registerModel);
+		userService.create(user);
 		
 		
 		//creates login model
-		LoginModel login = new LoginModel();
+		UserModel userLogin = new UserModel();
 		//adds title and login model to model for web page
 		model.addAttribute("title", "Login Form");
-		model.addAttribute("loginModel", login);
+		model.addAttribute("userModel", userLogin);
 		
 		//prints inputs into console
 		System.out.println(String.format("New User created with %s user name, %s password, %s %s name, %s phone number, %s email",
-				registerModel.getUsername(), 
-				registerModel.getPassword(), 
-				registerModel.getFirstname(), 
-				registerModel.getLastname(), 
-				registerModel.getPhonenumber(), 
-				registerModel.getEmail()));
+				user.getUsername(), 
+				user.getPassword(), 
+				user.getFirstname(), 
+				user.getLastname(), 
+				user.getPhonenumber(), 
+				user.getEmail()));
 	
 		return "login";
 		
