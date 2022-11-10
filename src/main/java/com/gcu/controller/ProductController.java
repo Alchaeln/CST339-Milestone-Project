@@ -104,7 +104,34 @@ public class ProductController {
 		
 		dataService.update(productModel);
 		
-		model.addAttribute("title", "Added Product!");
+		model.addAttribute("title", "Updated Product!");
+		model.addAttribute("productModel", service.getProducts());
+		
+		return "products";
+	}
+	
+	/**
+	 * validates and deletes product
+	 * @param productModel
+	 * @param bindingResult
+	 * @param model
+	 * @return newProduct view
+	 */
+	@PostMapping("/deleteProduct")
+	//@Valid checks that the product model is valid
+	public String deleteProduct(@Valid ProductModel productModel, BindingResult bindingResult,Model model) 
+	{
+		//if product is invalid, send back to product page
+		if(bindingResult.hasErrors()) 
+		{
+			model.addAttribute("title", "Did not delete product!");
+			model.addAttribute("productModel", new ProductModel());
+			return "deleteProduct";
+		}
+		
+		dataService.delete(productModel);
+		
+		model.addAttribute("title", "Deleted Product!");
 		model.addAttribute("productModel", service.getProducts());
 		
 		return "products";
