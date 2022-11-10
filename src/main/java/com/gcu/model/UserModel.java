@@ -17,19 +17,19 @@ public class UserModel {
 	}
 	//initialize variables with validation requirements 
 	@NotNull(message="First name is a required field")
-	@Size(min=1, max=32, message="First name must be between 1 and 32 characters")
+	@Size(min=1, max=20, message="First name must be between 1 and 32 characters")
 	private String firstname;
 	
 	@NotNull(message="Last name is a required field")
-	@Size(min=1, max=32, message="Last name must be between 1 and 32 characters")
+	@Size(min=1, max=20, message="Last name must be between 1 and 32 characters")
 	private String lastname;
 	
 	@NotNull(message="Address is a required field")
-	@Size(min=1, max=32, message="Address must be between 1 and 32 characters")
+	@Size(min=1, max=30, message="Address must be between 1 and 32 characters")
 	private String address;
 	
 	@NotNull(message="Email is a required field")
-	@Size(min=1, max=32, message="Email must be between 1 and 32 characters")
+	@Size(min=1, max=30, message="Email must be between 1 and 32 characters")
 	private String email;
 	
 	@Valid
