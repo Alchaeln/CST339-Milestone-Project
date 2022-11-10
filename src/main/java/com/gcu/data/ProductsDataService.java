@@ -14,14 +14,13 @@ import com.gcu.model.ProductModel;
 
 @Service
 public class ProductsDataService implements DataAccessInterface<ProductModel> {
-	
+
 	@SuppressWarnings("unused")
 	@Autowired
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplateObject;
-	
-	public ProductsDataService(DataSource dataSource) 
-	{
+
+	public ProductsDataService(DataSource dataSource) {
 		this.dataSource = dataSource;
 		this.jdbcTemplateObject = new JdbcTemplate(dataSource);
 	}
@@ -29,19 +28,13 @@ public class ProductsDataService implements DataAccessInterface<ProductModel> {
 	public List<ProductModel> findAll() {
 		String sql = "SELECT * FROM PRODUCTS";
 		List<ProductModel> products = new ArrayList<ProductModel>();
-		try 
-		{
+		try {
 			SqlRowSet srs = jdbcTemplateObject.queryForRowSet(sql);
-			while(srs.next()) 
-			{
-				products.add(new ProductModel(srs.getLong("ID"),
-										srs.getString("PRODUCT_NAME"),
-										srs.getFloat("PRICE"),
-										srs.getInt("QUANTITY")));
+			while (srs.next()) {
+				products.add(new ProductModel(srs.getLong("ID"), srs.getString("PRODUCT_NAME"), srs.getFloat("PRICE"),
+						srs.getInt("QUANTITY")));
 			}
-		}
-		catch(Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return products;
@@ -55,28 +48,43 @@ public class ProductsDataService implements DataAccessInterface<ProductModel> {
 	@Override
 	public boolean create(ProductModel product) {
 		String sql = "INSERT INTO products( PRODUCT_NAME, PRICE, QUANTITY) VALUES (?, ?, ?)";
-		try 
-		{
-			int rows = jdbcTemplateObject.update(sql,
-												product.getProductName(),
-												product.getPrice(),
-												product.getQuantity());
+		try {
+			int rows = jdbcTemplateObject.update(sql, product.getProductName(), product.getPrice(),
+					product.getQuantity());
 			return rows == 1 ? true : false;
-		}
-		catch(Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return false;
 	}
+
 	@Override
 	public boolean update(ProductModel product) {
-		return true;
+		String sql = "UPDATE products SET PRODUCT_NAME = '" + product.getProductName() + "', PRICE = "
+				+ product.getPrice() + ", QUANTITY = " + product.getQuantity() + " WHERE ID = " + product.getId();
+		try {
+
+			int rows = jdbcTemplateObject.update(sql);
+			
+			return rows == 1 ? true : false;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 	@Override
 	public boolean delete(ProductModel product) {
-		return true;
+		String sql = "DELETE FROM products WHERE ID = " + product.getId();
+		try {
+
+			int rows = jdbcTemplateObject.update(sql);
+			
+			return rows == 1 ? true : false;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }

@@ -29,6 +29,19 @@ public class ProductController {
 	private DataAccessInterface<ProductModel> dataService;
 	
 	/**
+	 * basic product page
+	 * @param model
+	 * @return newProduct view
+	 */
+	@GetMapping("/products")
+	public String display(Model model) 
+	{
+		model.addAttribute("title", "The Products");
+		model.addAttribute("productModel", service.getProducts());
+		return "products";
+	}
+	
+	/**
 	 * Method for displaying product page
 	 * @param model
 	 * @return Product view
@@ -44,20 +57,7 @@ public class ProductController {
 	}
 	
 	/**
-	 * basic product page
-	 * @param model
-	 * @return newProduct view
-	 */
-	@GetMapping("/products")
-	public String display(Model model) 
-	{
-		model.addAttribute("title", "The Products");
-		model.addAttribute("productModel", service.getProducts());
-		return "products";
-	}
-	
-	/**
-	 * validates product
+	 * validates and adds product
 	 * @param productModel
 	 * @param bindingResult
 	 * @param model
@@ -76,6 +76,33 @@ public class ProductController {
 		}
 		
 		dataService.create(productModel);
+		
+		model.addAttribute("title", "Added Product!");
+		model.addAttribute("productModel", service.getProducts());
+		
+		return "products";
+	}
+	
+	/**
+	 * validates and updates product
+	 * @param productModel
+	 * @param bindingResult
+	 * @param model
+	 * @return newProduct view
+	 */
+	@PostMapping("/updateProduct")
+	//@Valid checks that the product model is valid
+	public String updateProduct(@Valid ProductModel productModel, BindingResult bindingResult,Model model) 
+	{
+		//if product is invalid, send back to product page
+		if(bindingResult.hasErrors()) 
+		{
+			model.addAttribute("title", "Did not update product!");
+			model.addAttribute("productModel", new ProductModel());
+			return "updateProduct";
+		}
+		
+		dataService.update(productModel);
 		
 		model.addAttribute("title", "Added Product!");
 		model.addAttribute("productModel", service.getProducts());

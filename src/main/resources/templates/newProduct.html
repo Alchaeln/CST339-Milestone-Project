@@ -24,10 +24,6 @@
 					<td colspan="3"><input type="submit" value="Submit"></td>
 				</tr>
 			</table>
-			<div th:if="${#fields.hasErrors('*')}">List of Errors</div>
-			<div th:each="err : ${#fields.errors('*')}">
-				<span style="color:red" th:text="${err}" class="fieldError"></span>
-			</div>
 	</form>
 </div>
 
