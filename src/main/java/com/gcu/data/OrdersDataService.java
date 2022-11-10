@@ -10,6 +10,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
 
+import com.exception.DatabaseException;
+
 import com.gcu.model.OrderModel;
 
 @Service
@@ -43,9 +45,9 @@ public class OrdersDataService implements DataAccessInterface<OrderModel> {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			throw new DatabaseException("The Database Crashed", e);
 		}
-		return orders; //might be breaking here
+		return orders;
 	}
 
 	@Override
@@ -67,9 +69,8 @@ public class OrdersDataService implements DataAccessInterface<OrderModel> {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			throw new DatabaseException("The Database Crashed", e);
 		}
-		return false;
 	}
 
 	@Override

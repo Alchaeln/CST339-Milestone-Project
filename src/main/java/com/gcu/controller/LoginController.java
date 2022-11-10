@@ -77,6 +77,7 @@ public class LoginController {
 					credentials.getUsername(), credentials.getPassword()));
 			return "orders";
 		} catch (Exception e) {
+			e.printStackTrace();
 			model.addAttribute("title", "Error Page");
 			// passes order list that was just made to orders page
 			model.addAttribute("message", "ERROR: You have now entered the error page");

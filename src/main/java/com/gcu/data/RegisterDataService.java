@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import com.exception.DatabaseException;
 import com.gcu.model.UserModel;
 
 @Service
@@ -39,9 +40,8 @@ public class RegisterDataService implements DataAccessInterface<UserModel> {
 			return rows == 1 ? true : false;
 		}
 		catch(Exception e){
-			e.printStackTrace();
+			throw new DatabaseException("The Database Crashed", e);
 		}
-		return false;
 	}
 
 	@Override
