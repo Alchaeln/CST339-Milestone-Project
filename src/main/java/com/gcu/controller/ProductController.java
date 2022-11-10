@@ -36,9 +36,19 @@ public class ProductController {
 	@GetMapping("/products")
 	public String display(Model model) 
 	{
+		try {
 		model.addAttribute("title", "The Products");
 		model.addAttribute("productModel", service.getProducts());
 		return "products";
+		}
+		catch(Exception e)
+		{
+			//e.printStackTrace();
+			//model.addAttribute("title", "Error Page");
+			//passes order list that was just made to orders page
+			//model.addAttribute("message", "ERROR: You have now entered the error page");
+			return "errors";
+		}
 	}
 	
 	/**
@@ -74,13 +84,22 @@ public class ProductController {
 			model.addAttribute("productModel", new ProductModel());
 			return "newProduct";
 		}
-		
+		try {
 		dataService.create(productModel);
 		
 		model.addAttribute("title", "Added Product!");
 		model.addAttribute("productModel", service.getProducts());
 		
 		return "products";
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			model.addAttribute("title", "Error Page");
+			//passes order list that was just made to orders page
+			model.addAttribute("message", "ERROR: You have now entered the error page");
+			return "errors";
+		}
 	}
 	
 	/**
@@ -101,13 +120,21 @@ public class ProductController {
 			model.addAttribute("productModel", new ProductModel());
 			return "updateProduct";
 		}
-		
+		try {
 		dataService.update(productModel);
 		
 		model.addAttribute("title", "Updated Product!");
 		model.addAttribute("productModel", service.getProducts());
 		
 		return "products";
+		}
+		catch(Exception e)
+		{
+			model.addAttribute("title", "Error Page");
+			//passes order list that was just made to orders page
+			model.addAttribute("message", "ERROR: You have now entered the error page");
+			return "errors";
+		}
 	}
 	
 	/**
@@ -128,12 +155,21 @@ public class ProductController {
 			model.addAttribute("productModel", new ProductModel());
 			return "deleteProduct";
 		}
-		
+		try {
 		dataService.delete(productModel);
 		
 		model.addAttribute("title", "Deleted Product!");
 		model.addAttribute("productModel", service.getProducts());
 		
 		return "products";
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			model.addAttribute("title", "Error Page");
+			//passes order list that was just made to orders page
+			model.addAttribute("message", "ERROR: You have now entered the error page");
+			return "errors";
+		}
 	}
 }

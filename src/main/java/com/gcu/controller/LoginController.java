@@ -16,66 +16,72 @@ import com.gcu.model.CredentialsModel;
 
 /**
  * Has all the routes for the login page with root /login
+ * 
  * @author Edu and Chael
  */
 @Controller
 //Sets up URI for localhost:8080/login
 @RequestMapping("/login")
 public class LoginController {
-	
-	//initialize OrdersBusinessService
+
+	// initialize OrdersBusinessService
 	@Autowired
 	private OrdersBusinessServiceInterface service;
-	
+
 	@Autowired
 	private SecurityBusinessService security;
-	
+
 	/**
 	 * Method for displaying login page
+	 * 
 	 * @param model
 	 * @return login view
 	 */
-	//Sets up URI for localhost:8080/login/
+	// Sets up URI for localhost:8080/login/
 	@GetMapping("/")
-	public String display(Model model) 
-	{
-		//adds attributes of title and loginModel to be shown in the web page
+	public String display(Model model) {
+		// adds attributes of title and loginModel to be shown in the web page
 		model.addAttribute("title", "Login Form");
 		model.addAttribute("credentialsModel", new CredentialsModel());
 		return "login";
 	}
-	
+
 	/**
 	 * Logs the user in and shows the orders page if successful
+	 * 
 	 * @param loginModel
 	 * @param bindingResult
 	 * @param model
 	 * @return
 	 */
-	//Sets up URI for localhost:8080/login/doLogin
+	// Sets up URI for localhost:8080/login/doLogin
 	@PostMapping("/doLogin")
-	//@Valid checks that the username and password are valid
-	public String doLogin(@Valid CredentialsModel credentials, BindingResult bindingResult, Model model) 
-	{
-		//if username or password is invalid, send back to login page
-		if(bindingResult.hasErrors()) 
-		{
+	// @Valid checks that the username and password are valid
+	public String doLogin(@Valid CredentialsModel credentials, BindingResult bindingResult, Model model) {
+		// if username or password is invalid, send back to login page
+		if (bindingResult.hasErrors()) {
 			model.addAttribute("title", "Login Form");
 			return "login";
 		}
-		
-		security.authenticateLogin(credentials.getUsername(), credentials.getPassword());
-		
-		//gets username and adds title that the user is logged in as "username"
-		model.addAttribute("title", String.format("You are logged in as %s", credentials.getUsername()) + "!");
-		//passes order list that was just made to orders page
-		model.addAttribute("orders", service.getOrders());
 
-		//print out username and password to console
-		System.out.println(String.format("Logged in with Username of %s and Password of %s",credentials.getUsername(), credentials.getPassword()));
-		return "orders";
+		try {
+			security.authenticateLogin(credentials.getUsername(), credentials.getPassword());
+
+			// gets username and adds title that the user is logged in as "username"
+			model.addAttribute("title", String.format("You are logged in as %s", credentials.getUsername()) + "!");
+			// passes order list that was just made to orders page
+			model.addAttribute("orders", service.getOrders());
+
+			// print out username and password to console
+			System.out.println(String.format("Logged in with Username of %s and Password of %s",
+					credentials.getUsername(), credentials.getPassword()));
+			return "orders";
+		} catch (Exception e) {
+			model.addAttribute("title", "Error Page");
+			// passes order list that was just made to orders page
+			model.addAttribute("message", "ERROR: You have now entered the error page");
+			return "errors";
+		}
 	}
-	
-	
 
 }
