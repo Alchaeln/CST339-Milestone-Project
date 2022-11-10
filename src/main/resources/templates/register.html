@@ -18,29 +18,29 @@ layout:decorate="layouts/defaultTemplate">
 					<td><h5 style="color:red" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Last Name Error</h5></td>
 				</tr>
 				<tr>
-					<td>Username:</td><td><input type="text" th:field="*{username}"></td>
-					<td><h5 style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">User Name Error</h5></td>
-				</tr>
-				<tr>
-					<td>Password :</td><td><input type="password" th:field="*{password}"></td>
-					<td><h5 style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</h5></td>
-				</tr>
-				<tr>
 					<td>Email :</td><td><input type="email" th:field="*{email}"></td>
 					<td><h5 style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</h5></td>
 				</tr>
 				<tr>
-					<td>Phone Number:</td><td><input type="text" th:field="*{phonenumber}"></td>
-					<td><h5 style="color:red" th:if="${#fields.hasErrors('phonenumber')}" th:errors="*{phonenumber}">Phone Number Error</h5></td>
+					<td>Address:</td><td><input type="text" th:field="*{address}"></td>
+					<td><h5 style="color:red" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address Error</h5></td>
+				</tr>
+				<tr>
+					<td>Username:</td><td><input type="text" th:field="*{credentials.username}"></td>
+					<td><h5 style="color:red" th:if="${#fields.hasErrors('credentials.username')}" th:errors="*{credentials.username}">User Name Error</h5></td>
+				</tr>
+				<tr>
+					<td>Password :</td><td><input type="password" th:field="*{credentials.password}"></td>
+					<td><h5 style="color:red" th:if="${#fields.hasErrors('credentials.password')}" th:errors="*{credentials.password}">Password Error</h5></td>
 				</tr>
 				<tr>
 					<td colspan="3"><input type="submit" value="Submit"></td>
 				</tr>
 			</table>
-			<div th:if="${#fields.hasErrors('*')}">List of Errors</div>
+			<!--<div th:if="${#fields.hasErrors('*')}">List of Errors</div>
 			<div th:each="err : ${#fields.errors('*')}">
 				<span style="color:red" th:text="${err}" class="fieldError"></span>
-			</div>
+			</div>-->
 		</form>
 	</div>
 </html>

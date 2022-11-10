@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class SecurityBusinessService {
 	/**
-	 * Placeholder authentication that returns true
+	 * Placeholder authentication for login that returns true
 	 * @param username
 	 * @param password
 	 * @return true
@@ -20,9 +20,19 @@ public class SecurityBusinessService {
 		 return true;
 	 }
 	 
-	 public boolean authenticateRegister(String username, String password, String firstName, String lastName, String phoneNumber, String email) 
+	 /**
+		 * Placeholder authentication for register that returns true
+		 * @param username
+		 * @param password
+		 * @param firstName
+		 * @param lastName
+		 * @param address
+		 * @param email
+		 * @return true
+		 */
+	 public boolean authenticateRegister(String username, String password, String firstName, String lastName, String address, String email) 
 	 {
-		 System.out.printf("Authenticated %s with password %s first name %s  last name %s phone number %s email %s", username, password, firstName, lastName, phoneNumber, email);
+		 System.out.printf("Authenticated %s with password %s first name %s  last name %s address %s email %s", username, password, firstName, lastName, address, email);
 		 return true;
 	 }
 }

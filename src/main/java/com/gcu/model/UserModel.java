@@ -1,5 +1,6 @@
 package com.gcu.model;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -8,6 +9,12 @@ import javax.validation.constraints.Size;
  * @author Edu and Chael
  */
 public class UserModel {
+	public CredentialsModel getCredentials() {
+		return credentials;
+	}
+	public void setCredentials(CredentialsModel credentials) {
+		this.credentials = credentials;
+	}
 	//initialize variables with validation requirements 
 	@NotNull(message="First name is a required field")
 	@Size(min=1, max=32, message="First name must be between 1 and 32 characters")
@@ -17,47 +24,30 @@ public class UserModel {
 	@Size(min=1, max=32, message="Last name must be between 1 and 32 characters")
 	private String lastname;
 	
-	@NotNull(message="Phone Number is a required field")
-	@Size(min=1, max=32, message="Phone Number must be between 1 and 32 characters")
-	private String phonenumber;
+	@NotNull(message="Address is a required field")
+	@Size(min=1, max=32, message="Address must be between 1 and 32 characters")
+	private String address;
 	
 	@NotNull(message="Email is a required field")
 	@Size(min=1, max=32, message="Email must be between 1 and 32 characters")
 	private String email;
 	
-	@NotNull(message="Username is a required field")
-	@Size(min=1, max=32, message="Username must be between 1 and 32 characters")
-	private String username;
+	@Valid
+	private CredentialsModel credentials;
 	
-	@NotNull(message="Password is a required field")
-	@Size(min=1, max=32, message="Password must be between 1 and 32 characters")
-	private String password;
-	
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
+	/**
+	 * public getter for address
+	 * @return address
+	 */
+	public String getAddress() {
+		return address;
 	}
 	/**
-	 * public getter for phone number
-	 * @return phoneNumber
+	 * public setter for address
+	 * @param address
 	 */
-	public String getPhonenumber() {
-		return phonenumber;
-	}
-	/**
-	 * public setter for phone number
-	 * @param phonenumber
-	 */
-	public void setPhonenumber(String phonenumber) {
-		this.phonenumber = phonenumber;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	/**
 	 * public getter for first name

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gcu.business.SecurityBusinessService;
 import com.gcu.data.RegisterDataService;
+import com.gcu.model.CredentialsModel;
 import com.gcu.model.UserModel;
 
 /**
@@ -63,29 +64,29 @@ public class RegisterController {
 			return "register";
 		}
 		
-		security.authenticateRegister(user.getUsername(), 
-				user.getPassword(), 
+		security.authenticateRegister(user.getCredentials().getUsername(), 
+				user.getCredentials().getPassword(), 
 				user.getFirstname(),
 				user.getLastname(),
-				user.getPhonenumber(),
+				user.getAddress(),
 				user.getEmail());
 		
 		userService.create(user);
 		
 		
 		//creates login model
-		UserModel userLogin = new UserModel();
+		CredentialsModel userLogin = new CredentialsModel();
 		//adds title and login model to model for web page
 		model.addAttribute("title", "Login Form");
-		model.addAttribute("userModel", userLogin);
+		model.addAttribute("credentialsModel", userLogin);
 		
 		//prints inputs into console
 		System.out.println(String.format("New User created with %s user name, %s password, %s %s name, %s phone number, %s email",
-				user.getUsername(), 
-				user.getPassword(), 
+				user.getCredentials().getUsername(), 
+				user.getCredentials().getPassword(), 
 				user.getFirstname(), 
 				user.getLastname(), 
-				user.getPhonenumber(), 
+				user.getAddress(), 
 				user.getEmail()));
 	
 		return "login";

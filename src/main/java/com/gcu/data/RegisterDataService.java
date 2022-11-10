@@ -26,20 +26,19 @@ public class RegisterDataService implements DataAccessInterface<UserModel> {
 	
 	@Override
 	public boolean create(UserModel user) {
-		String sql = "INSERT INTO users( FIRST_NAME, LAST_NAME, USERNAME, PHONE_NUMBER, PASSWORD, EMAIL) VALUES (?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO users( FIRST_NAME, LAST_NAME, ADDRESS, EMAIL, USERNAME, PASSWORD) VALUES (?, ?, ?, ?, ?, ?)";
 		try 
 		{
 			int rows = jdbcTemplateObject.update(sql,
 												user.getFirstname(),
 												user.getLastname(),
-												user.getUsername(),
-												user.getPhonenumber(),
-												user.getPassword(),
-												user.getEmail());
+												user.getAddress(),
+												user.getEmail(),
+												user.getCredentials().getUsername(),
+												user.getCredentials().getPassword());
 			return rows == 1 ? true : false;
 		}
-		catch(Exception e)
-		{
+		catch(Exception e){
 			e.printStackTrace();
 		}
 		return false;
