@@ -29,7 +29,7 @@ public class RegisterController {
 	
 	@Autowired
 	private RegisterDataService userService;
-	
+
 	/**
 	 * add attributes to model and returns register view
 	 * @param model
@@ -64,6 +64,8 @@ public class RegisterController {
 			return "register";
 		}
 		
+		try {
+		
 		security.authenticateRegister(user.getCredentials().getUsername(), 
 				user.getCredentials().getPassword(), 
 				user.getFirstname(),
@@ -90,6 +92,15 @@ public class RegisterController {
 				user.getEmail()));
 	
 		return "login";
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			model.addAttribute("title", "Error Page");
+			//passes order list that was just made to orders page
+			model.addAttribute("message", "ERROR: You have now entered the error page");
+			return "errors";
+		}
 		
 
 	}

@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
 
+import com.exception.DatabaseException;
 import com.gcu.model.ProductModel;
 
 @Service
@@ -35,7 +36,7 @@ public class ProductsDataService implements DataAccessInterface<ProductModel> {
 						srs.getInt("QUANTITY")));
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new DatabaseException("The Database Crashed", e);
 		}
 		return products;
 	}
@@ -53,9 +54,8 @@ public class ProductsDataService implements DataAccessInterface<ProductModel> {
 					product.getQuantity());
 			return rows == 1 ? true : false;
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new DatabaseException("The Database Crashed", e);
 		}
-		return false;
 	}
 
 	@Override
