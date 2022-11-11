@@ -84,15 +84,30 @@ public class ProductController {
 	}
 	
 	/**
+	 * Method for displaying product page
+	 * @param model
+	 * @return Product view
+	 */
+	//Sets up URI for localhost:8080/enterProduct/
+	@GetMapping("/updateProduct")
+	public String updateProduct(Model model) 
+	{
+		//adds attributes of title and productModel to be shown in the web page
+		model.addAttribute("title", "Update a Product");
+		model.addAttribute("productModel", new ProductModel());
+		return "updateProduct";
+	}
+	
+	/**
 	 * validates and updates product
 	 * @param productModel
 	 * @param bindingResult
 	 * @param model
 	 * @return newProduct view
 	 */
-	@PostMapping("/updateProduct")
+	@PostMapping("/doUpdateProduct")
 	//@Valid checks that the product model is valid
-	public String updateProduct(@Valid ProductModel productModel, BindingResult bindingResult,Model model) 
+	public String doUpdateProduct(@Valid ProductModel productModel, BindingResult bindingResult,Model model) 
 	{
 		//if product is invalid, send back to product page
 		if(bindingResult.hasErrors()) 
@@ -111,15 +126,30 @@ public class ProductController {
 	}
 	
 	/**
+	 * Method for displaying product page
+	 * @param model
+	 * @return Product view
+	 */
+	//Sets up URI for localhost:8080/enterProduct/
+	@GetMapping("/deleteProduct")
+	public String deleteProduct(Model model) 
+	{
+		//adds attributes of title and productModel to be shown in the web page
+		model.addAttribute("title", "Delete a Product");
+		model.addAttribute("productModel", new ProductModel());
+		return "deleteProduct";
+	}
+	
+	/**
 	 * validates and deletes product
 	 * @param productModel
 	 * @param bindingResult
 	 * @param model
 	 * @return newProduct view
 	 */
-	@PostMapping("/deleteProduct")
+	@PostMapping("/doDeleteProduct")
 	//@Valid checks that the product model is valid
-	public String deleteProduct(@Valid ProductModel productModel, BindingResult bindingResult,Model model) 
+	public String doDeleteProduct(@Valid ProductModel productModel, BindingResult bindingResult,Model model) 
 	{
 		//if product is invalid, send back to product page
 		if(bindingResult.hasErrors()) 
