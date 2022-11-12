@@ -10,18 +10,14 @@ import javax.validation.constraints.Size;
  */
 public class ProductModel {
 	//creates private variables
-	//when adding max and min gives data validation errors
 	@NotNull(message="ID is a required field")
 	private long id;
 	
-	@NotNull(message="Product Name is a required field")
 	@Size(min=1, max=30, message="productName must be between 1 and 30 characters")
 	private String productName;
 	
-	@NotNull(message="Price is a required field")
 	private float price;
 	
-	@NotNull(message="Quantity is a required field")
 	private int quantity;
 	
 	/**
