@@ -12,14 +12,14 @@ import com.exception.DatabaseException;
 import com.gcu.model.UserModel;
 
 @Service
-public class RegisterDataService implements DataAccessInterface<UserModel> {
+public class UsersDataService implements DataAccessInterface<UserModel> {
 
 	@SuppressWarnings("unused")
 	@Autowired
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplateObject;
 	
-	public RegisterDataService(DataSource dataSource) 
+	public UsersDataService(DataSource dataSource) 
 	{
 		this.dataSource = dataSource;
 		this.jdbcTemplateObject = new JdbcTemplate(dataSource);

@@ -9,12 +9,7 @@ import javax.validation.constraints.Size;
  * @author Edu and Chael
  */
 public class UserModel {
-	public CredentialsModel getCredentials() {
-		return credentials;
-	}
-	public void setCredentials(CredentialsModel credentials) {
-		this.credentials = credentials;
-	}
+	
 	//initialize variables with validation requirements 
 	@NotNull(message="First name is a required field")
 	@Size(min=1, max=20, message="First name must be between 1 and 32 characters")
@@ -35,6 +30,20 @@ public class UserModel {
 	@Valid
 	private CredentialsModel credentials;
 	
+	/**
+	 * public getter for credentials
+	 * @return credentials
+	 */
+	public CredentialsModel getCredentials() {
+		return credentials;
+	}
+	/**
+	 * public setter for credentials
+	 * @param credentials
+	 */
+	public void setCredentials(CredentialsModel credentials) {
+		this.credentials = credentials;
+	}
 	/**
 	 * public getter for address
 	 * @return address

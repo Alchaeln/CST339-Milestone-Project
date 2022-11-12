@@ -45,14 +45,13 @@ public class ProductController {
 		{
 			e.printStackTrace();
 			model.addAttribute("title", "Error Page");
-			//passes order list that was just made to orders page
 			model.addAttribute("message", "ERROR: You have now entered the error page");
 			return "errors";
 		}
 	}
 	
 	/**
-	 * Method for displaying product page
+	 * Method for displaying add product page
 	 * @param model
 	 * @return Product view
 	 */
@@ -103,7 +102,7 @@ public class ProductController {
 	}
 	
 	/**
-	 * Method for displaying product page
+	 * Method for displaying update product page
 	 * @param model
 	 * @return Product view
 	 */
@@ -153,7 +152,7 @@ public class ProductController {
 	}
 	
 	/**
-	 * Method for displaying product page
+	 * Method for displaying delete product page
 	 * @param model
 	 * @return Product view
 	 */

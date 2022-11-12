@@ -12,15 +12,21 @@ import com.gcu.model.ProductModel;
 
 public class ProductsBusinessService implements ProductsBusinessServiceInterface {
 
-
+	//DataAccessInterface to be able to connect to database
 	@Autowired
 	DataAccessInterface<ProductModel> service;
 	
+	/**
+	 * returns all products from the database
+	 */
 	@Override
 	public List<ProductModel> getProducts() {
 		return service.findAll();
 	}
 
+	/**
+	 * Prints INIT to console to show initialization
+	 */
 	@PostConstruct
 	public void init() {
 		System.out.println("INIT");

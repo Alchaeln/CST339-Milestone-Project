@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gcu.business.SecurityBusinessService;
-import com.gcu.data.RegisterDataService;
+import com.gcu.data.UsersDataService;
 import com.gcu.model.CredentialsModel;
 import com.gcu.model.UserModel;
 
@@ -28,7 +28,7 @@ public class RegisterController {
 	private SecurityBusinessService security;
 	
 	@Autowired
-	private RegisterDataService userService;
+	private UsersDataService userService;
 
 	/**
 	 * add attributes to model and returns register view
@@ -63,9 +63,8 @@ public class RegisterController {
 			model.addAttribute("title", "Register Form");
 			return "register";
 		}
-		
 		try {
-		
+		//pass in all variables to security service
 		security.authenticateRegister(user.getCredentials().getUsername(), 
 				user.getCredentials().getPassword(), 
 				user.getFirstname(),
@@ -73,8 +72,8 @@ public class RegisterController {
 				user.getAddress(),
 				user.getEmail());
 		
+		//creates new user in database
 		userService.create(user);
-		
 		
 		//creates login model
 		CredentialsModel userLogin = new CredentialsModel();
@@ -96,13 +95,11 @@ public class RegisterController {
 		catch(Exception e)
 		{
 			e.printStackTrace();
+			//sends user to error page
 			model.addAttribute("title", "Error Page");
-			//passes order list that was just made to orders page
 			model.addAttribute("message", "ERROR: You have now entered the error page");
 			return "errors";
 		}
-		
-
 	}
 	
 }

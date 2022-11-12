@@ -1,28 +1,19 @@
 package com.exception;
 
+/**
+ * @author Edu and Chael
+ * This class extends from RuntimeException to check for an unchecked exception of the database shutting down while using the website
+ */
+@SuppressWarnings("serial")
 public class DatabaseException extends RuntimeException {
 	
-	//default constructor calls the default constructor
-	//initializepg
-	//unchecked exception extrend from runtime exception
-
-	public DatabaseException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-		super(message, cause, enableSuppression, writableStackTrace);
-		// TODO Auto-generated constructor stub
-	}
-
+	/**
+	 * Constructor for custom exception
+	 * @param message
+	 * @param cause
+	 */
 	public DatabaseException(String message, Throwable cause) {
+		//calls super constructor to create custom exception
 		super(message, cause);
-		// TODO Auto-generated constructor stub
-	}
-
-	public DatabaseException(String message) {
-		super(message);
-		// TODO Auto-generated constructor stub
-	}
-
-	public DatabaseException(Throwable cause) {
-		super(cause);
-		// TODO Auto-generated constructor stub
 	}
 }
