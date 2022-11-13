@@ -42,11 +42,6 @@ public class ProductsDataService implements DataAccessInterface<ProductModel> {
 	}
 
 	@Override
-	public ProductModel findById(int id) {
-		return null;
-	}
-
-	@Override
 	public boolean create(ProductModel product) {
 		String sql = "INSERT INTO products( PRODUCT_NAME, PRICE, QUANTITY) VALUES (?, ?, ?)";
 		try {
@@ -87,4 +82,8 @@ public class ProductsDataService implements DataAccessInterface<ProductModel> {
 		return false;
 	}
 
+	@Override
+	public ProductModel findById(int id) {
+		return null;
+	}
 }
