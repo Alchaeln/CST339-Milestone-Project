@@ -113,7 +113,7 @@ public class ProductController {
 		model.addAttribute("title", "Added Product!");
 		model.addAttribute("productModel", service.getProducts());
 		
-		return "products";
+		return "productsTest";
 		}
 		catch(Exception e)
 		{
@@ -214,7 +214,7 @@ public class ProductController {
 		model.addAttribute("title", "Deleted Product!");
 		model.addAttribute("productModel", service.getProducts());
 		
-		return "products";
+		return "productsTest";
 		}
 		catch(Exception e)
 		{
