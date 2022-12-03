@@ -23,6 +23,14 @@ public class ProductsBusinessService implements ProductsBusinessServiceInterface
 	public List<ProductModel> getProducts() {
 		return service.findAll();
 	}
+	
+	/**
+	 * returns one product from the database
+	 */
+	@Override
+	public ProductModel getProduct(long id) {
+		return service.findById(id);
+	}
 
 	/**
 	 * Prints INIT to console to show initialization

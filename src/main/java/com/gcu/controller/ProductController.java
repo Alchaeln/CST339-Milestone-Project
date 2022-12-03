@@ -39,7 +39,31 @@ public class ProductController {
 		try {
 		model.addAttribute("title", "The Products");
 		model.addAttribute("productModel", service.getProducts());
-		return "products";
+		//change back when done testing
+		return "productsTest";
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			model.addAttribute("title", "Error Page");
+			model.addAttribute("message", "ERROR: You have now entered the error page");
+			return "errors";
+		}
+	}
+	
+	/**
+	 * Specific product page
+	 * @param model
+	 * @return newProduct view
+	 */
+	@PostMapping("/product")
+	public String displayProduct(Model model, ProductModel product) 
+	{
+		System.out.println(product.getProductName());
+		try {
+		model.addAttribute("title", product.getProductName());
+		model.addAttribute("productModel", product);
+		return "product";
 		}
 		catch(Exception e)
 		{
@@ -107,12 +131,12 @@ public class ProductController {
 	 * @return Product view
 	 */
 	//Sets up URI for localhost:8080/enterProduct/
-	@GetMapping("/updateProduct")
-	public String updateProduct(Model model) 
+	@PostMapping("/updateProduct")
+	public String updateProduct(Model model, ProductModel productModel) 
 	{
 		//adds attributes of title and productModel to be shown in the web page
-		model.addAttribute("title", "Update a Product");
-		model.addAttribute("productModel", new ProductModel());
+		model.addAttribute("title", "Update " + productModel.getProductName());
+		model.addAttribute("productModel", productModel);
 		return "updateProduct";
 	}
 	
@@ -140,7 +164,7 @@ public class ProductController {
 		model.addAttribute("title", "Updated Product!");
 		model.addAttribute("productModel", service.getProducts());
 		
-		return "products";
+		return "productsTest";
 		}
 		catch(Exception e)
 		{
@@ -157,7 +181,7 @@ public class ProductController {
 	 * @return Product view
 	 */
 	//Sets up URI for localhost:8080/enterProduct/
-	@GetMapping("/deleteProduct")
+	@PostMapping("/deleteProduct")
 	public String deleteProduct(Model model) 
 	{
 		//adds attributes of title and productModel to be shown in the web page

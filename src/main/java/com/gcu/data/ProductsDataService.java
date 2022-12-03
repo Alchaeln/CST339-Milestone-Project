@@ -60,7 +60,7 @@ public class ProductsDataService implements DataAccessInterface<ProductModel> {
 		try {
 
 			int rows = jdbcTemplateObject.update(sql);
-			
+
 			return rows == 1 ? true : false;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -74,7 +74,7 @@ public class ProductsDataService implements DataAccessInterface<ProductModel> {
 		try {
 
 			int rows = jdbcTemplateObject.update(sql);
-			
+
 			return rows == 1 ? true : false;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -83,7 +83,18 @@ public class ProductsDataService implements DataAccessInterface<ProductModel> {
 	}
 
 	@Override
-	public ProductModel findById(int id) {
-		return null;
+	public ProductModel findById(long id) {
+		String sql = "SELECT * FROM `products` WHERE `ID` = " + id;
+		List<ProductModel> products = new ArrayList<ProductModel>();
+		try {
+			SqlRowSet srs = jdbcTemplateObject.queryForRowSet(sql);
+			while (srs.next()) {
+				products.add(new ProductModel(srs.getLong("ID"), srs.getString("PRODUCT_NAME"), srs.getFloat("PRICE"),
+						srs.getInt("QUANTITY")));
+			}
+		} catch (Exception e) {
+			throw new DatabaseException("The Database Crashed", e);
+		}
+		return products.get(0);
 	}
 }

@@ -63,7 +63,7 @@ public class UsersDataService implements DataAccessInterface<UserModel> {
 	}
 
 	@Override
-	public UserModel findById(int id) {
+	public UserModel findById(long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

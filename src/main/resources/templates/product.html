@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/defaultTemplate">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title th:text="${productModel.productName}">Product Name</title>
+</head>
+
+<body>
+	<div layout:fragment="content">
+		<h3>What would you like to do with </h3>
+		<h3 th:text="${productModel.productName}">Product Name</h3>
+		<table>
+			<tr>
+				<td>
+					<form action="#" th:action="@{/updateProduct}" th:object="${productModel}" method="post"><input
+							type="submit" value="Update Product"></form>
+				</td>
+				<td>
+					<form action="#" th:action="@{/deleteProduct}" th:object="${productModel}" method="post"><input
+							type="submit" value="Delete Product"></form>
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+
+</html>

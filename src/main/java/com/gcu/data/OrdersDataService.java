@@ -51,7 +51,7 @@ public class OrdersDataService implements DataAccessInterface<OrderModel> {
 	}
 
 	@Override
-	public OrderModel findById(int id) {
+	public OrderModel findById(long id) {
 		return null;
 	}
 

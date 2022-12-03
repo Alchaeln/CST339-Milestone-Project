@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layouts/defaultTemplate">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Products</title>
+</head>
+
+<body>
+	<div layout:fragment="content">
+		<a th:href="@{/enterProduct}">Add Product</a>
+		<table style="width:50%">
+			<thead>
+				<tr>
+					<th width="100px" style="text-align:center">ID</th>
+					<th width="500px" style="text-align:center">Product Name</th>
+					<th width="100px" style="text-align:center">Price</th>
+					<th width="100px" style="text-align:center">Quantity</th>
+					<th>
+			</thead>
+			<tbody>
+				<tr th:if="${productModel.empty}">
+					<td style="text-align:center" colspan="4">No Orders Available</td>
+				</tr>
+
+				<tr th:each="product : ${productModel}">
+					<form action="#" th:action="@{/product}" th:object="${product}" method="post">
+						<button type="submit">
+							<table>
+								<tr>
+									<td width="100px" style="text-align:center">
+										<h5 th:text="${product.id}">ID</h5>
+									</td>
+									<td width="500px" style="text-align:center">
+										<h5 th:text="${product.productName}">Product 1</h5>
+									</td>
+									<td width="100px" style="text-align:center">
+										<h5 th:text="${product.price}">1.00</h5>
+									</td>
+									<td width="100px" style="text-align:center">
+										<h5 th:text="${product.quantity}">1</h5>
+									</td>
+								</tr>
+							</table>
+						</button>
+					</form>
+					<br />
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+
+</html>
