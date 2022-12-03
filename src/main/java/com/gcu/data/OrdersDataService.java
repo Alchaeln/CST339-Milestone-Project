@@ -37,8 +37,8 @@ public class OrdersDataService implements DataAccessInterface<OrderModel> {
 			while(srs.next()) 
 			{
 				orders.add(new OrderModel(srs.getLong("ID"),
-										srs.getLong("PRODUCT_ID"),
-										srs.getString("CUSTOMER_NAME"),
+										srs.getLong("products_ID"),
+										srs.getLong("users_ID"),
 										srs.getFloat("TOTAL"),
 										srs.getInt("QUANTITY")));
 			}
@@ -62,7 +62,7 @@ public class OrdersDataService implements DataAccessInterface<OrderModel> {
 		{
 			int rows = jdbcTemplateObject.update(sql,
 												order.getProductId(),
-												order.getCustomerName(),
+												order.getUserId(),
 												order.getTotal(),
 												order.getQuantity());
 			return rows == 1 ? true : false;

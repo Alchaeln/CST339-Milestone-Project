@@ -8,7 +8,7 @@ public class OrderModel {
 	//creates private variables
 	private long id;
 	private long productId;
-	private String customerName;
+	private long userId;
 	private float total;
 	private int quantity;
 	
@@ -23,27 +23,35 @@ public class OrderModel {
 	 * public setter for private variable id
 	 * @param id
 	 */
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
+	
+	public long getUserId() {
+		return userId;
+	}
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
+	
 	/**
 	 * public getter for private variable productName
 	 * @return customerName
-	 */
+	 *
 	public String getCustomerName() {
 		return customerName;
 	}
 	/**
 	 * public setter for private variable productName
 	 * @param productName
-	 */
+	 *
 	public void setCustomerName(String productName) {
 		this.customerName = productName;
 	}
 	/**
 	 * public getter for private variable price
 	 * @return price
-	 */
+	 **/
 	public Float getTotal() {
 		return total;
 	}
@@ -76,11 +84,11 @@ public class OrderModel {
 	 * @param total
 	 * @param quantity
 	 */
-	public OrderModel(long id, long productId, String customerName, float total, int quantity) {
+	public OrderModel(long id, long productId, long userId, float total, int quantity) {
 		super();
 		this.id = id;
 		this.productId = productId;
-		this.customerName = customerName;
+		this.userId = userId;
 		this.total = total;
 		this.quantity = quantity;
 	}

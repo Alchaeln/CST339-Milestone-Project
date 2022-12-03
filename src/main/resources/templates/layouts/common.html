@@ -30,6 +30,11 @@
                <ul class="nav navbar-nav navbar-right">
                   <li><a th:href="@{/login/}">Login</a></li>
                   <li><a th:href="@{/register/}">Register</a></li>
+                  <li>
+                  <form th:action="@{/logout}" method="POST">
+                  	<input type="submit" value="Log Out"/>
+                  </form>
+                  </li>
                </ul>
            </div>
        </nav>
