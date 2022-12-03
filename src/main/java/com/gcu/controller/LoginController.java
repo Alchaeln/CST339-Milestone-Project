@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.gcu.business.OrdersBusinessServiceInterface;
 import com.gcu.business.SecurityBusinessService;
 import com.gcu.model.CredentialsModel;
+import com.gcu.model.UserModel;
 
 /**
  * Has all the routes for the login page with root /login
@@ -21,30 +22,16 @@ import com.gcu.model.CredentialsModel;
  */
 @Controller
 //Sets up URI for localhost:8080/login
-@RequestMapping("/login")
 public class LoginController {
 
-	// initialize OrdersBusinessService
-	@Autowired
-	private OrdersBusinessServiceInterface service;
-
-	@Autowired
-	private SecurityBusinessService security;
-
-	/**
-	 * Method for displaying login page
-	 * 
-	 * @param model
-	 * @return login view
-	 */
-	// Sets up URI for localhost:8080/login/
-	@GetMapping("/")
-	public String display(Model model) {
-		// adds attributes of title and loginModel to be shown in the web page
+	@GetMapping("/login")
+	public String display(Model model) 
+	{
 		model.addAttribute("title", "Login Form");
-		model.addAttribute("credentialsModel", new CredentialsModel());
+		model.addAttribute("loginModel", new UserModel());
 		return "login";
 	}
+
 
 	/**
 	 * Logs the user in and shows the orders page if successful
@@ -55,6 +42,7 @@ public class LoginController {
 	 * @return
 	 */
 	// Sets up URI for localhost:8080/login/doLogin
+	/**
 	@PostMapping("/doLogin")
 	// @Valid checks that the username and password are valid
 	public String doLogin(@Valid CredentialsModel credentials, BindingResult bindingResult, Model model) {
@@ -84,5 +72,6 @@ public class LoginController {
 			return "errors";
 		}
 	}
+	**/
 
 }
