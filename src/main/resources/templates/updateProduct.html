@@ -12,14 +12,6 @@
 		<form action="#" th:action="@{/doUpdateProduct}" th:object="${productModel}" method="post">
 			<table>
 				<tr>
-					<td>Product ID :</td>
-					<td><input type="text" th:field="*{id}"></td>
-					<td>
-						<h5 style="color:red" th:if="${#fields.hasErrors('id')}" th:errors="*{id}">
-							Product ID Error</h5>
-					</td>
-				</tr>
-				<tr>
 					<td>Product Name :</td>
 					<td><input type="text" th:field="*{productName}"></td>
 					<td>
