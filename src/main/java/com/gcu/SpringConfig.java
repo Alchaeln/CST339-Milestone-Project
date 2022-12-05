@@ -21,6 +21,7 @@ public class SpringConfig {
 	@Bean(name="ordersBusinessService", initMethod="init", destroyMethod="destroy")
 	public OrdersBusinessServiceInterface getOrdersBusiness() 
 	{
+		//returns a new instance of OrdersBusinessService to be used
 		return new OrdersBusinessService();
 	}
 	
@@ -31,6 +32,7 @@ public class SpringConfig {
 	@Bean(name="productsBusinessService", initMethod="init", destroyMethod="destroy")
 	public ProductsBusinessServiceInterface getProductsBusiness() 
 	{
+		//returns a new instance of ProductsBusinessService to be used
 		return new ProductsBusinessService();
 	}
 }

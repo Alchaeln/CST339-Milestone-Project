@@ -7,33 +7,46 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+/**
+ * This class sets up the security for the website using Spring Security
+ * @author Edu and Chael
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter 
 {
 	@Override
+	/**
+	 * This method configures the security settings by setting certain links as unprotected and disabling all other urls
+	 * @param http
+	 */
 	protected void configure(HttpSecurity http) throws Exception 
 	{
+		//disables the ability to access any links other than the ones listed in the unprotected list until user is logged in
 		http.csrf().disable()
 			.authorizeRequests()
 				.antMatchers("/", "/images/**", "/service/**", "/register/**").permitAll() //unprotected list
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
-				.loginPage("/login")
+				.loginPage("/login")//sets login page as the login page for spring security
 				.usernameParameter("username")
                 .passwordParameter("password")
 				.permitAll()
-				.defaultSuccessUrl("/order/display", true) //shows the form with this
+				.defaultSuccessUrl("/order/display", true) //Once successfully logged in, spring security reroutes you to the orders page
 				.and()
 			.logout()
-				.logoutUrl("/logout")
-				.invalidateHttpSession(true)
+				.logoutUrl("/logout")//format logout button
+				.invalidateHttpSession(true)//logs user out
 				.clearAuthentication(true)
 				.permitAll()
-				.logoutSuccessUrl("/"); //after logout takes us to here
+				.logoutSuccessUrl("/"); //after logout takes us to the home page
 	}
 	
+	/**
+	 * This method sets the username and password for the allowed user.
+	 * @param auth
+	 */
     @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception
     {

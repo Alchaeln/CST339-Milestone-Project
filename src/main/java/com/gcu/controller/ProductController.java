@@ -52,7 +52,6 @@ public class ProductController {
 
 	/**
 	 * Specific product page
-	 * 
 	 * @param model
 	 * @return newProduct view
 	 */

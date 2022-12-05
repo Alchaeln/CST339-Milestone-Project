@@ -30,6 +30,7 @@ public class OrdersRestService {
 	@GetMapping(path="/getjson", produces= {MediaType.APPLICATION_JSON_VALUE})
 	public List<OrderModel> getOrdersAsJson()
 	{
+		//returns all orders in a json format
 		return service.getOrders();
 	}
 	
@@ -41,6 +42,7 @@ public class OrdersRestService {
 	public OrderList getOrdersAsXml()
 	{
 		OrderList list = new OrderList();
+		//uses the getOrders method from OrderList to transfer the data into the order list
 		list.setOrders(service.getOrders());
 		return list;
 	}

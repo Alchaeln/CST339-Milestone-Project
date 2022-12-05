@@ -21,11 +21,19 @@ public class ProductsDataService implements DataAccessInterface<ProductModel> {
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplateObject;
 
+	/**
+	 * This method instantiates the ProductsDataService
+	 * 
+	 * @param dataSource
+	 */
 	public ProductsDataService(DataSource dataSource) {
 		this.dataSource = dataSource;
 		this.jdbcTemplateObject = new JdbcTemplate(dataSource);
 	}
 
+	/**
+	 * This method returns all Products from the database into a List
+	 */
 	public List<ProductModel> findAll() {
 		String sql = "SELECT * FROM PRODUCTS";
 		List<ProductModel> products = new ArrayList<ProductModel>();
@@ -35,12 +43,18 @@ public class ProductsDataService implements DataAccessInterface<ProductModel> {
 				products.add(new ProductModel(srs.getLong("ID"), srs.getString("PRODUCT_NAME"), srs.getFloat("PRICE"),
 						srs.getInt("QUANTITY")));
 			}
-		} catch (Exception e) {
+		}
+		// catches any exception and throws our custom exception
+		catch (Exception e) {
 			throw new DatabaseException("The Database Crashed", e);
 		}
 		return products;
 	}
 
+	/**
+	 * This method creates a new Product within the database with the data passed in through the parameter
+	 * @param product
+	 */
 	@Override
 	public boolean create(ProductModel product) {
 		String sql = "INSERT INTO products( PRODUCT_NAME, PRICE, QUANTITY) VALUES (?, ?, ?)";
@@ -48,11 +62,17 @@ public class ProductsDataService implements DataAccessInterface<ProductModel> {
 			int rows = jdbcTemplateObject.update(sql, product.getProductName(), product.getPrice(),
 					product.getQuantity());
 			return rows == 1 ? true : false;
-		} catch (Exception e) {
+		}
+		// catches any exception and throws our custom exception
+		catch (Exception e) {
 			throw new DatabaseException("The Database Crashed", e);
 		}
 	}
 
+	/**
+	 * This method updates a Product within the database with the data passed in through the parameter
+	 * @param product
+	 */
 	@Override
 	public boolean update(ProductModel product) {
 		String sql = "UPDATE products SET PRODUCT_NAME = '" + product.getProductName() + "', PRICE = "
@@ -62,12 +82,18 @@ public class ProductsDataService implements DataAccessInterface<ProductModel> {
 			int rows = jdbcTemplateObject.update(sql);
 
 			return rows == 1 ? true : false;
-		} catch (Exception e) {
+		}
+		// catches any exception and throws our custom exception
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 		return false;
 	}
 
+	/**
+	 * This method deletes a Product within the database with the data passed in through the parameter
+	 * @param product
+	 */
 	@Override
 	public boolean delete(ProductModel product) {
 		String sql = "DELETE FROM products WHERE ID = " + product.getId();
@@ -82,6 +108,10 @@ public class ProductsDataService implements DataAccessInterface<ProductModel> {
 		return false;
 	}
 
+	/**
+	 * This method takes the id parameter and searches the database for a Product with a matching id and returns the order
+	 * @param id
+	 */
 	@Override
 	public ProductModel findById(long id) {
 		String sql = "SELECT * FROM `products` WHERE `ID` = " + id;
@@ -92,7 +122,9 @@ public class ProductsDataService implements DataAccessInterface<ProductModel> {
 				products.add(new ProductModel(srs.getLong("ID"), srs.getString("PRODUCT_NAME"), srs.getFloat("PRICE"),
 						srs.getInt("QUANTITY")));
 			}
-		} catch (Exception e) {
+		}
+		// catches any exception and throws our custom exception
+		catch (Exception e) {
 			throw new DatabaseException("The Database Crashed", e);
 		}
 		return products.get(0);

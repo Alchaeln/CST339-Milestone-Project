@@ -16,7 +16,7 @@ import com.gcu.model.OrderModel;
  */
 public class OrdersBusinessService implements OrdersBusinessServiceInterface{
 	
-
+	//Autowired DataAccessInterface to be able to return the Order data
 	@Autowired
 	DataAccessInterface<OrderModel> service;
 
@@ -25,6 +25,7 @@ public class OrdersBusinessService implements OrdersBusinessServiceInterface{
 	 * @return orders
 	 */
 	public List<OrderModel> getOrders() {
+		//returns list of orders from the database
 		return service.findAll();
 	}
 
