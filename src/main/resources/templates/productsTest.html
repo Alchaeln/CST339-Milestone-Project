@@ -20,12 +20,9 @@
 					<th width="500px" style="text-align:center">Product Name</th>
 					<th width="100px" style="text-align:center">Price</th>
 					<th width="100px" style="text-align:center">Quantity</th>
-					<th>
+				</tr>
 			</thead>
 			<tbody>
-				<tr th:if="${productModel.empty}">
-					<td style="text-align:center" colspan="4">No Orders Available</td>
-				</tr>
 				<tr th:each="product : ${productModel}">
 					<form th:action="@{/product}" th:object="${product}" method="post">
 						<button type="submit">
