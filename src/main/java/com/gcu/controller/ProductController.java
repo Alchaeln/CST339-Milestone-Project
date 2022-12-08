@@ -41,7 +41,7 @@ public class ProductController {
 			model.addAttribute("title", "The Products");
 			model.addAttribute("productModel", service.getProducts());
 			// change back when done testing
-			return "productsTest";
+			return "products";
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("title", "Error Page");
@@ -56,11 +56,11 @@ public class ProductController {
 	 * @return newProduct view
 	 */
 	@PostMapping("/product")
-	public String displayProduct(Model model, ProductModel product) {
-		System.out.println(product.getProductName());
+	public String displayProduct(Model model, long id) {
+		System.out.println(id);
 		try {
-			model.addAttribute("title", product.getProductName());
-			model.addAttribute("productModel", product);
+			model.addAttribute("title", service.getProduct(id).getProductName());
+			model.addAttribute("productModel", service.getProduct(id));
 			return "product";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -108,7 +108,7 @@ public class ProductController {
 			model.addAttribute("title", "Added Product!");
 			model.addAttribute("productModel", service.getProducts());
 
-			return "productsTest";
+			return "products";
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("title", "Error Page");
@@ -157,7 +157,7 @@ public class ProductController {
 			model.addAttribute("title", "Updated Product!");
 			model.addAttribute("productModel", service.getProducts());
 
-			return "productsTest";
+			return "products";
 		} catch (Exception e) {
 			model.addAttribute("title", "Error Page");
 			// passes order list that was just made to orders page
@@ -198,7 +198,7 @@ public class ProductController {
 			model.addAttribute("title", "Deleted Product!");
 			model.addAttribute("productModel", service.getProducts());
 
-			return "productsTest";
+			return "products";
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("title", "Error Page");
