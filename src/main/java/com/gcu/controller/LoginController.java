@@ -24,6 +24,7 @@ import com.gcu.model.UserModel;
 //Sets up URI for localhost:8080/login
 public class LoginController {
 
+	
 	@GetMapping("/login")
 	public String display(Model model) 
 	{
@@ -70,7 +71,7 @@ public class LoginController {
 			// passes order list that was just made to orders page
 			model.addAttribute("message", "ERROR: You have now entered the error page");
 			return "errors";
-		}
+			}
 	}
 	**/
 

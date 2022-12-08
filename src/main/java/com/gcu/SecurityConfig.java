@@ -1,11 +1,14 @@
 package com.gcu;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * This class sets up the security for the website using Spring Security
@@ -15,6 +18,24 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter 
 {
+	//uses connection to database
+    @Autowired
+    private DataSource dataSource;
+    
+	/**
+	 * This method sets the username and password for the allowed user.
+	 * @param auth
+	 */
+    @Autowired
+    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+        auth.jdbcAuthentication().passwordEncoder(new BCryptPasswordEncoder())
+            .dataSource(dataSource)
+            .usersByUsernameQuery("select username, password, enabled from users WHERE username = ?")
+            .authoritiesByUsernameQuery("select username, role from users where username=?");
+ 
+        System.out.println("=============" +  new BCryptPasswordEncoder().encode("admin"));
+    }
+    
 	@Override
 	/**
 	 * This method configures the security settings by setting certain links as unprotected and disabling all other urls
@@ -43,16 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 				.logoutSuccessUrl("/"); //after logout takes us to the home page
 	}
 	
-	/**
-	 * This method sets the username and password for the allowed user.
-	 * @param auth
-	 */
-    @Autowired
-    public void configure(AuthenticationManagerBuilder auth) throws Exception
-    {
-        auth.inMemoryAuthentication()
-                .withUser("test").password("{noop}test").roles("USER"); //in memory authentication password with no ecryption
-    }
+
 }
 
 
