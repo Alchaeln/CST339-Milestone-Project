@@ -45,8 +45,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 	{
 		//disables the ability to access any links other than the ones listed in the unprotected list until user is logged in
 		http.csrf().disable()
+			.httpBasic()
+				.and()
+				.authorizeRequests()
+				.antMatchers("/service/**").authenticated()
+				.and()
 			.authorizeRequests()
-				.antMatchers("/", "/images/**", "/service/**", "/register/**").permitAll() //unprotected list
+				.antMatchers("/", "/images/**", "/register/**").permitAll() //unprotected list
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
