@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -40,6 +41,7 @@ public class ProductController {
 		try {
 			model.addAttribute("title", "The Products");
 			model.addAttribute("productModel", service.getProducts());
+			model.addAttribute("productID", new ProductModel());
 			// change back when done testing
 			return "products";
 		} catch (Exception e) {
@@ -56,11 +58,11 @@ public class ProductController {
 	 * @return newProduct view
 	 */
 	@PostMapping("/product")
-	public String displayProduct(Model model, long id) {
-		System.out.println(id);
+	public String displayProduct(@ModelAttribute ProductModel product, Model model) {
+		System.out.println(product.getId());
 		try {
-			model.addAttribute("title", service.getProduct(id).getProductName());
-			model.addAttribute("productModel", service.getProduct(id));
+			model.addAttribute("title", service.getProduct(product.getId()).getProductName());
+			model.addAttribute("productModel", service.getProduct(product.getId()));
 			return "product";
 		} catch (Exception e) {
 			e.printStackTrace();
