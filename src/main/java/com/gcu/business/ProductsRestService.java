@@ -14,61 +14,58 @@ import com.gcu.model.ProductModel;
 
 /**
  * OrdersRestService allows the return of JSON and XML formatted Products list
+ * 
  * @author Edu and Chael
  */
 @RestController
 @RequestMapping("/service")
 public class ProductsRestService {
-	
-	//initialize service variable
+
+	// initialize service variable
 	@Autowired
 	private ProductsBusinessServiceInterface service;
-	
+
 	/**
 	 * Returns JSON version of Products
+	 * 
 	 * @return service.getProducts()
 	 */
-	@GetMapping(path="/products", produces= {MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<?> getProducts()
-	{
+	@GetMapping(path = "/products", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<?> getProducts() {
+		// try to get products from database
 		try {
 			List<ProductModel> products = service.getProducts();
-			if (products == null) 
-			{
+			// if no products were returned return not found
+			if (products == null) {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-			}
-			else
+			} else
+				// return all products in json format
 				return new ResponseEntity<>(products, HttpStatus.OK);
-		//returns all products in a json format
-		//return service.getProducts();
-		}
-		catch(Exception e)
-		{
+		} catch (Exception e) {
+			// catch any exceptions and return internal server error
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-	}	
-	
+	}
+
 	/**
-	 * Returns JSON version of Products
+	 * Returns JSON version of a specific Product
+	 * @param id
 	 * @return service.getProducts()
 	 */
-	@GetMapping(path="/product", produces= {MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<?> getProduct(long id)
-	{
+	@GetMapping(path = "/product", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<?> getProduct(long id) {
+		//try to get a specific order by Id
 		try {
 			ProductModel product = service.getProduct(id);
-			if (product == null) 
-			{
+			//if no product is returned return not found
+			if (product == null) {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-			}
-			else
+			} else
+				//return specified product in json format
 				return new ResponseEntity<>(product, HttpStatus.OK);
-		//returns one product in a json format
-		//return service.getProduct();
-		}
-		catch(Exception e)
-		{
+		} catch (Exception e) {
+			//catch any exceptions and return internal server error
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-	}	
+	}
 }
