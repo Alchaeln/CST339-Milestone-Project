@@ -32,8 +32,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
             .dataSource(dataSource)
             .usersByUsernameQuery("select username, password, enabled from users WHERE username = ?")
             .authoritiesByUsernameQuery("select username, role from users where username=?");
- 
-        System.out.println("=============" +  new BCryptPasswordEncoder().encode("navarro"));
     }
     
 	@Override
