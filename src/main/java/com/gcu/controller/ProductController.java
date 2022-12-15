@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -58,7 +57,7 @@ public class ProductController {
 	 * @return newProduct view
 	 */
 	@PostMapping("/product")
-	public String displayProduct(@ModelAttribute ProductModel product, Model model) {
+	public String displayProduct(ProductModel product, Model model) {
 		System.out.println(product.getId());
 		try {
 			model.addAttribute("title", service.getProduct(product.getId()).getProductName());
@@ -128,10 +127,10 @@ public class ProductController {
 	 */
 	// Sets up URI for localhost:8080/enterProduct/
 	@PostMapping("/updateProduct")
-	public String updateProduct(Model model, ProductModel productModel) {
+	public String updateProduct(ProductModel productModel, Model model) {
 		// adds attributes of title and productModel to be shown in the web page
-		model.addAttribute("title", "Update " + productModel.getProductName());
-		model.addAttribute("productModel", productModel);
+		model.addAttribute("title", "Update " + service.getProduct(productModel.getId()).getProductName());
+		model.addAttribute("productModel", service.getProduct(productModel.getId()));
 		return "updateProduct";
 	}
 
@@ -176,10 +175,10 @@ public class ProductController {
 	 */
 	// Sets up URI for localhost:8080/enterProduct/
 	@PostMapping("/deleteProduct")
-	public String deleteProduct(Model model, ProductModel product) {
+	public String deleteProduct(ProductModel product, Model model) {
 		// adds attributes of title and productModel to be shown in the web page
 		model.addAttribute("title", "Delete a Product");
-		model.addAttribute("productModel", product);
+		model.addAttribute("productModel", service.getProduct(product.getId()));
 		return "deleteProduct";
 	}
 
