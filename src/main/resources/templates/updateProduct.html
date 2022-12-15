@@ -10,6 +10,7 @@
 <body>
 	<div layout:fragment="content">
 		<form action="#" th:action="@{/doUpdateProduct}" th:object="${productModel}" method="post">
+			<input type="hidden" name="id" th:value="${productModel.id}">
 			<table>
 				<tr>
 					<td>Product Name :</td>
