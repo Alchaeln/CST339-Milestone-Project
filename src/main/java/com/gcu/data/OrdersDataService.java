@@ -40,7 +40,7 @@ public class OrdersDataService implements DataAccessInterface<OrderModel> {
 	 * This method returns all Orders from the database into a List
 	 */
 	public List<OrderModel> findAll() {
-		String sql = "SELECT * FROM orders";
+		String sql = "SELECT * FROM ORDERS";
 		List<OrderModel> orders = new ArrayList<OrderModel>();
 		try {
 			SqlRowSet srs = jdbcTemplateObject.queryForRowSet(sql);
