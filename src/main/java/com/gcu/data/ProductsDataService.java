@@ -39,7 +39,7 @@ public class ProductsDataService implements DataAccessInterface<ProductModel> {
 	 * This method returns all Products from the database into a List
 	 */
 	public List<ProductModel> findAll() {
-		String sql = "SELECT * FROM products";
+		String sql = "SELECT * FROM PRODUCTS";
 		List<ProductModel> products = new ArrayList<ProductModel>();
 		try {
 			SqlRowSet srs = jdbcTemplateObject.queryForRowSet(sql);
