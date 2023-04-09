@@ -13,6 +13,10 @@ import org.springframework.stereotype.Service;
 import com.exception.DatabaseException;
 import com.gcu.model.ProductModel;
 
+/**
+ * Data service to access products from the database
+ * @author Edu and Chael
+ */
 @Service
 public class ProductsDataService implements DataAccessInterface<ProductModel> {
 
