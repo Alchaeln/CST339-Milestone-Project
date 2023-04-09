@@ -4,10 +4,6 @@ import java.util.List;
 
 import com.gcu.model.ProductModel;
 
-/**
- * interface to create product business services
- * @author Edu and Chael
- */
 public interface ProductsBusinessServiceInterface {
 	
 	/**

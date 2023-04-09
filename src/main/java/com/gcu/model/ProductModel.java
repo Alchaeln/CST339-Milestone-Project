@@ -76,13 +76,7 @@ public class ProductModel {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	/**
-	 * Non default product constructor
-	 * @param id
-	 * @param productName
-	 * @param price
-	 * @param quantity
-	 */
+	
 	public ProductModel(long id, String productName, float price, int quantity) {
 		super();
 		this.id = id;
@@ -90,9 +84,7 @@ public class ProductModel {
 		this.price = price;
 		this.quantity = quantity;
 	}
-	/**
-	 * default product constructor
-	 */
+	
 	public ProductModel() {
 		// TODO Auto-generated constructor stub
 	}

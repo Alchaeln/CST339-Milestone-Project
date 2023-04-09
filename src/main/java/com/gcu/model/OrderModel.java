@@ -26,24 +26,32 @@ public class OrderModel {
 	public void setId(long id) {
 		this.id = id;
 	}
-	/**
-	 * getter for userId
-	 * @return userId
-	 */
+	
 	public long getUserId() {
 		return userId;
 	}
-	/**
-	 * setter for userId
-	 * @param userId
-	 */
 	public void setUserId(long userId) {
 		this.userId = userId;
 	}
+	
 	/**
-	 * getter for total
-	 * @return total
-	 */
+	 * public getter for private variable productName
+	 * @return customerName
+	 *
+	public String getCustomerName() {
+		return customerName;
+	}
+	/**
+	 * public setter for private variable productName
+	 * @param productName
+	 *
+	public void setCustomerName(String productName) {
+		this.customerName = productName;
+	}
+	/**
+	 * public getter for private variable price
+	 * @return price
+	 **/
 	public Float getTotal() {
 		return total;
 	}
@@ -72,7 +80,7 @@ public class OrderModel {
 	 * public constructor
 	 * @param id
 	 * @param productId
-	 * @param userId
+	 * @param customerName
 	 * @param total
 	 * @param quantity
 	 */

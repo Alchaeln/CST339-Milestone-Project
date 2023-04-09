@@ -3,10 +3,7 @@ package com.gcu.business;
 import java.util.List;
 
 import com.gcu.model.OrderModel;
-/**
- * Interface for Order Business services
- * @author Edu and Chael
- */
+
 public interface OrdersBusinessServiceInterface {
 	
 	/**

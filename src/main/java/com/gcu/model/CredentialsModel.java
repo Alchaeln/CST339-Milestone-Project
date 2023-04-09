@@ -3,10 +3,6 @@ package com.gcu.model;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-/**
- * This class contains the username and password for a user used to login and register
- * @author Edu and Chael
- */
 public class CredentialsModel {
 
 	@NotNull(message="Username is a required field")

@@ -14,10 +14,6 @@ import com.exception.DatabaseException;
 
 import com.gcu.model.OrderModel;
 
-/**
- * Data class to return orders from database
- * @author Edu
- */
 @Service
 public class OrdersDataService implements DataAccessInterface<OrderModel> {
 

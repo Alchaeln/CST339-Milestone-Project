@@ -10,44 +10,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.gcu.business.OrdersBusinessServiceInterface;
 import com.gcu.model.CredentialsModel;
 
-/**
- * Controller class for the orders page
- * @author Edu and Chael
- */
 @Controller
 @RequestMapping("/order")
 public class OrdersController {
-
+	
 	@Autowired
 	private OrdersBusinessServiceInterface service;
-
-	/**
-	 * displays orders page if login gredentials are valid
-	 * @param credentials
-	 * @param bindingResult
-	 * @param model
-	 * @return
-	 */
+	
 	@GetMapping("/display")
 	public String display(CredentialsModel credentials, BindingResult bindingResult, Model model) {
 		// if username or password is invalid, send back to login page
-		if (bindingResult.hasErrors()) {
+		if (bindingResult.hasErrors()) 
+		{
 			model.addAttribute("title", "Login Form");
 			return "login";
 		}
 
-		try {
-			// gets username and adds title that the user is logged in as "username"
-			model.addAttribute("title", "You are logged in!");
-			// passes order list that was just made to orders page
-			model.addAttribute("orders", service.getOrders());
-			return "orders";
-		} catch (Exception e) {
-			e.printStackTrace();
-			model.addAttribute("title", "Error Page");
-			model.addAttribute("message", "ERROR: You have now entered the error page");
-			return "errors";
-		}
-
+		try
+			{
+				// gets username and adds title that the user is logged in as "username"
+				model.addAttribute("title", "You are logged in!");
+				// passes order list that was just made to orders page
+				model.addAttribute("orders", service.getOrders());
+				return "orders";
+			}
+		catch (Exception e) 
+			{
+				e.printStackTrace();
+				model.addAttribute("title", "Error Page");
+				// passes order list that was just made to orders page
+				model.addAttribute("message", "ERROR: You have now entered the error page");
+				return "errors";
+			}
+	
 	}
 }

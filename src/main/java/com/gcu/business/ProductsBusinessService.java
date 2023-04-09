@@ -10,10 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.gcu.data.DataAccessInterface;
 import com.gcu.model.ProductModel;
 
-/**
- * Class used to access products from the database
- * @author Edu and Chael
- */
 public class ProductsBusinessService implements ProductsBusinessServiceInterface {
 
 	//DataAccessInterface to be able to connect to database

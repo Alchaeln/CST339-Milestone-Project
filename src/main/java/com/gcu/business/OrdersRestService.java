@@ -12,62 +12,71 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gcu.model.OrderList;
 import com.gcu.model.OrderModel;
+import com.gcu.model.ProductModel;
 
 /**
  * OrdersRestService allows the return of JSON and XML formatted orders list
- * 
  * @author Edu and Chael
  */
 @RestController
 @RequestMapping("/service")
 public class OrdersRestService {
-
-	// initialize service variable
+	
+	//initialize service variable
 	@Autowired
 	private OrdersBusinessServiceInterface service;
-
+	
 	/**
 	 * Returns JSON version of orders
-	 * 
 	 * @return service.getOrders()
 	 */
-	@GetMapping(path = "/getjson", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<?> getOrdersAsJson() {
-		//try to get orders from database
+	@GetMapping(path="/getjson", produces= {MediaType.APPLICATION_JSON_VALUE})
+	public ResponseEntity<?> getOrdersAsJson()
+	{
 		try {
 			List<OrderModel> orders = service.getOrders();
-			//if orders arent set to anything return not found
-			if (orders == null) {
+			if (orders == null) 
+			{
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-			} else
-				//return all orders in json format
+			}
+			else
 				return new ResponseEntity<>(orders, HttpStatus.OK);
-		} catch (Exception e) {
-			//catch any exception and return internal server error
+		//returns all products in a json format
+		//return service.getProducts();
+		}
+		catch(Exception e)
+		{
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-
+	
 	/**
 	 * Returns XML format list of orders
-	 * 
 	 * @return return list
 	 */
-	@GetMapping(path = "/getxml", produces = { MediaType.APPLICATION_XML_VALUE })
-	public ResponseEntity<?> getOrdersAsXml() {
-		//try to populate OrderList
+	@GetMapping(path="/getxml", produces= {MediaType.APPLICATION_XML_VALUE})
+	public ResponseEntity<?> getOrdersAsXml()
+	{
+		OrderList list = new OrderList();
+		
 		try {
-			OrderList list = new OrderList();
 			list.setOrders(service.getOrders());
-			//If list is empty return not found
-			if (list.getOrders() == null) {
+			if (list == null) 
+			{
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-			} else
-				// returns all orders in a xml format
+			}
+			else
 				return new ResponseEntity<>(list, HttpStatus.OK);
-		} catch (Exception e) {
-			//catch any exception and return internal server error
+		//returns all products in a json format
+		//return service.getProducts();
+		}
+		catch(Exception e)
+		{
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+		//OrderList list = new OrderList();
+		//uses the getOrders method from OrderList to transfer the data into the order list
+		//list.setOrders(service.getOrders());
+		//return list;
 	}
 }

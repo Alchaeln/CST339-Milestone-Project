@@ -24,7 +24,6 @@ import com.gcu.model.ProductModel;
 @RequestMapping("/")
 public class ProductController {
 
-	//initialize service variables
 	@Autowired
 	private ProductsBusinessServiceInterface service;
 	@Autowired
@@ -32,8 +31,9 @@ public class ProductController {
 
 	/**
 	 * basic product page
+	 * 
 	 * @param model
-	 * @return products page
+	 * @return newProduct view
 	 */
 	@GetMapping("/products")
 	public String display(Model model) {
@@ -54,20 +54,16 @@ public class ProductController {
 	/**
 	 * Specific product page
 	 * @param model
-	 * @param product
-	 * @return Product view
+	 * @return newProduct view
 	 */
 	@PostMapping("/product")
 	public String displayProduct(ProductModel product, Model model) {
-		//print passed id for debugging
 		System.out.println(product.getId());
-		//try to return specific product page
 		try {
 			model.addAttribute("title", service.getProduct(product.getId()).getProductName());
 			model.addAttribute("productModel", service.getProduct(product.getId()));
 			return "product";
 		} catch (Exception e) {
-			//catch any exception and return error page
 			e.printStackTrace();
 			model.addAttribute("title", "Error Page");
 			model.addAttribute("message", "ERROR: You have now entered the error page");
@@ -77,6 +73,7 @@ public class ProductController {
 
 	/**
 	 * Method for displaying add product page
+	 * 
 	 * @param model
 	 * @return Product view
 	 */
@@ -124,10 +121,11 @@ public class ProductController {
 
 	/**
 	 * Method for displaying update product page
+	 * 
 	 * @param model
-	 * @param product
 	 * @return Product view
 	 */
+	// Sets up URI for localhost:8080/enterProduct/
 	@PostMapping("/updateProduct")
 	public String updateProduct(ProductModel productModel, Model model) {
 		// adds attributes of title and productModel to be shown in the web page
@@ -138,6 +136,7 @@ public class ProductController {
 
 	/**
 	 * validates and updates product
+	 * 
 	 * @param productModel
 	 * @param bindingResult
 	 * @param model
@@ -170,7 +169,7 @@ public class ProductController {
 
 	/**
 	 * Method for displaying delete product page
-	 * @param product
+	 * 
 	 * @param model
 	 * @return Product view
 	 */
@@ -186,9 +185,10 @@ public class ProductController {
 	/**
 	 * validates and deletes product
 	 * 
-	 * @param product
+	 * @param productModel
+	 * @param bindingResult
 	 * @param model
-	 * @return Products view
+	 * @return newProduct view
 	 */
 	@PostMapping("/doDeleteProduct")
 	// @Valid checks that the product model is valid
